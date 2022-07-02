@@ -1,6 +1,8 @@
 # DnD-Session-Summary-App
 
-This App will initially prompt the user for information, consecutively,  regarding the prior session (New People Encountered, Hit Points, New Items, Remarkable moments, Notes about Party Members, Money, etc). This information will then be rendered and displayed onto a one-page summary styled sheet. 
+This App will initially prompt the user for information, consecutively,  regarding the prior session (New People Encountered, Hit Points, New Items, Remarkable moments, Notes about Party Members, Money, etc). This information will then be rendered and displayed onto a one-page summary styled sheet.
+
+This will be an incredible app.
 
 ## Features:
 1. Can be saved.
