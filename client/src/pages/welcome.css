@@ -1,0 +1,8 @@
+.welcome {
+
+}
+.welcome .welcome__module {
+    background: #eeeeee;
+    height: 300px;
+    margin: 15px;
+}
