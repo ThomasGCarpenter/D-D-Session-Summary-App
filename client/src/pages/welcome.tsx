@@ -3,6 +3,7 @@ import './welcome.css';
 
 function Welcome() {
     return(
+        
         <div className="welcome">
             <div className="container">
                 <div className="row">
@@ -24,6 +25,7 @@ function Welcome() {
                 </div>
             </div>
         </div>
+      
     )
 }
 
