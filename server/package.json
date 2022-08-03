@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fastify.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.0.0",
+    "@fastify/mongodb": "^6.0.1",
+    "dotenv": "^16.0.1",
+    "fastify": "^4.3.0",
+    "fastify-formbody": "^5.3.0",
+    "fastify-mongodb": "^4.2.0",
+    "fastify-mongoose": "^0.3.0",
+    "fastify-plugin": "^4.0.0",
+    "mongodb": "^4.8.1",
+    "nodemon": "^2.0.19"
+  }
+}

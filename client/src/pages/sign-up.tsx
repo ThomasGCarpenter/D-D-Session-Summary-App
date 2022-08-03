@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './signup.css';
 
 function SignUp () {
     const [username, setUsername] = useState('')
@@ -8,21 +8,24 @@ function SignUp () {
     return (
         <div className='SignUp'>
             <div className="container">
-                <form>
-                    <div className="form-group">
-                        <label>Username</label>
+                <form className = 'card p-3'>
+                    <div className="module">
+                        <h3>Sign Up!</h3>
+                    </div>
+                    <div className="module">
+                        <label></label>
                         <input 
                             type="email" 
                             className="form-control" 
                             aria-describedby="emailHelp" 
-                            placeholder="Username"
+                            placeholder="Username must be unique"
                             onChange={(evt) => setUsername(evt.target.value)}    
                             value={username}
                         />
-                        <small id="emailHelp" className="form-text text-muted">Username must be unique</small>
+                        {/* <small id="emailHelp" className="form-text text-muted">Username must be unique</small> */}
                     </div>
-                    <div className="form-group">
-                        <label>Password</label>
+                    <div className="module">
+                        <label></label>
                         <input 
                             type="password" 
                             className="form-control" 
@@ -32,7 +35,7 @@ function SignUp () {
                        />
                     </div>
                     
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-success m-1">Submit</button>
                 </form>
             </div>
         </div>

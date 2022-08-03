@@ -1,0 +1,21 @@
+.SignUp .card {
+    margin-top: 100px;
+    border-color: black;
+    border-width: 1.5px;
+    border-radius: 5%;
+    width: 500px;
+    height: 300px;
+    background-color: rgba(148, 163, 228, 0.158);
+}
+
+.SignUp .container {
+    display: grid;
+    justify-content: center;
+}
+
+.SignUp {
+
+    background: linear-gradient(344deg, rgba(148, 163, 228, 0.8379726890756303) 25%, rgba(247, 251, 142, 0.6951155462184874) 100%);
+    height: 100vh;
+        width: 100vw;
+}

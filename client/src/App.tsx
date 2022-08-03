@@ -6,6 +6,8 @@ import Header from './components/header'
 import { Routes, Route } from "react-router-dom" 
 import SignUp from './pages/sign-up'
 import SignIn from './pages/sign-in'
+import Stories from './pages/stories'
+import Create from './pages/add-story'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path='/' element={<Welcome />}/>
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
+          <Route path="stories" element={<Stories />} />
+          <Route path="add-story" element={<Create />} /> 
         </Routes>
       </div>
   );

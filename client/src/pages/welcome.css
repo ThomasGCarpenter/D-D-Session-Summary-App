@@ -1,8 +1,28 @@
-.welcome {
-
-}
-.welcome .welcome__module {
-    background: #eeeeee;
+.welcome .welcome__module1 {
+    border: 1px solid #2d2d2d;
     height: 300px;
     margin: 15px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background-image: url('../images/welcome-background.jpg');
+    background-size: contain;
+
 }
+
+.welcome .welcome__module2 {
+border: 1px solid #2d2d2d;
+    height: 300px;
+    margin: 15px;
+    display: grid;
+        justify-content: center;
+        align-content: center;
+   
+}
+
+.welcome {
+    background: linear-gradient(344deg, rgba(148, 163, 228, 0.8379726890756303) 25%, rgba(247, 251, 142, 0.6951155462184874) 100%);
+        height: 100vh;
+        width: 100vw;
+}
+
