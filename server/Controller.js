@@ -20,8 +20,6 @@ class Controller {
             });
         };
 
-
-
         this.updateCustomer = function (id, data) {
             return new Promise((resolve, reject) => {
                 CustomerSchema.update({ _id: id }, data)

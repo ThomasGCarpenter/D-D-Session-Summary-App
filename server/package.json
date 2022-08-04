@@ -5,7 +5,8 @@
   "main": "fastify.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node fastify.js",
+    "develop": "nodemon fastify.js"
   },
   "author": "",
   "license": "ISC",

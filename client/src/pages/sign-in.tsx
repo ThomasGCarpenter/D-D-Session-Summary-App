@@ -21,25 +21,19 @@ function SignIn () {
         evt.preventDefault()
         console.log(evt)
         const userData = {
-            username: username,
-            password: password
+          username: username,
+          password: password
         };
-        try {
-            await axios
-                .post("http://localhost:3000/signin", userData)
-                  .then((res) => {
-                        console.log(res.data);
-                        setUsername(username);
-                        setPassword(password);
-                    })
-        } catch (err) {
-            console.log(err)
-        }
- }
-    
-    
-    
 
+        try {
+          const result = await axios.post("http://localhost:3000/signin", userData)
+          console.log(result.data);
+          //setUsername(username);
+          //setPassword(password);
+        } catch (err) {
+          console.log(err)
+        }
+     }
 
     return (
         <div className='SignIn' onSubmit={handleFormSubmit}>
@@ -88,7 +82,6 @@ function SignIn () {
             </div>
         </div>
     )
-    
 }
 
 export default SignIn;
