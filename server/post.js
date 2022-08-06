@@ -11,3 +11,7 @@ const collection = fastify.mongo.db.collection('test_collection');
     }
 
     module.exports = post
+
+
+    // "start": "node fastify.js",
+    // "develop": "nodemon fastify.js"

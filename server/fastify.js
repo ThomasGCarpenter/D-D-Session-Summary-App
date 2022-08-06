@@ -3,7 +3,7 @@ import MongoDBPlugin from '@fastify/mongodb'
 import cors from '@fastify/cors'
 
 const fastify = Fastify({
-  //logger: true
+  logger: true
 })
 await fastify.register(cors, { 
   // put your options here
@@ -18,26 +18,24 @@ fastify.addContentTypeParser('application/jsoff', function (request, payload, do
   })
 })
 
-// fastify.get('/test', async (request, reply) => {
-//   const usersCollection = fastify.mongo.client.db('mydb').collection('users')
+fastify.get('/addstory', async (request, reply) => {
+  const usersAnswers = fastify.mongo.client.db('mydb').collection('answers')
 
-//   let users
-//   try {
-//     users = await usersCollection.find({}).toArray()
-//     console.log(users)
-//   } catch (err) {
-//     console.log(err)
-//   }
+  let answers
+  try {
+    answers = await usersAnswers.find({}).toArray()
+    console.log(answers)
+  } catch (err) {
+    console.log(err)
+  }
 
-//   // Data to send to the client
-//   return {
-//     message: 'Test route successfully hit!',
-//     whatever: 'can go here',
-//     users
-//   }
-// })
-
-
+  // Data to send to the client
+  return {
+    message: 'Test route successfully hit!',
+    whatever: 'can go here',
+    users
+  }
+})
 
 fastify.post('/addstory', async (request, reply) => {
   // Changed users to answers
@@ -61,10 +59,6 @@ fastify.post('/addstory', async (request, reply) => {
     return { code: 500, message: 'Adding answer failed' }
    }
 })
-
-// fastify.post('/addstory', (req, reply) => {
-//   reply.send(req.body)
-// })
 
 const start = async () => {
   try {

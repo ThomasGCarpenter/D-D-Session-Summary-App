@@ -1,8 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
 
 function Stories () {
+
+  const [title, setTitle] = useState('')
+
+
+  async function populate() {
+    try {
+      const response = await axios.get("http://localhost:9444/addstory");
+      console.log(response);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+
+
+
+
   return (
   <table className="table">
     <thead>

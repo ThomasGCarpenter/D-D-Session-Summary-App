@@ -1,0 +1,13 @@
+.navbar-brand {
+    font: italic 1.2em "Fira Sans", serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+
+.mx-auto {
+    font: small-caps bold 24px/1 sans-serif;
+    color: rgb(185, 83, 119);
+   
+}
