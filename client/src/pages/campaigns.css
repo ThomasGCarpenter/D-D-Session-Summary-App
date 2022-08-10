@@ -22,3 +22,7 @@
 .campaigns .nav-link {
     text-decoration: underline;
 }
+
+.campaigns .nav-link:hover {
+    color: red;
+}
