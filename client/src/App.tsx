@@ -6,9 +6,12 @@ import Header from './components/header'
 import { Routes, Route } from "react-router-dom" 
 import SignUp from './pages/sign-up'
 import SignIn from './pages/sign-in'
-import Stories from './pages/stories'
-import Create from './pages/add-story'
+import AddSession from './pages/add-session'
 import Campaigns from './pages/campaigns'
+import NewCampaign from './pages/campaigns-create'
+import ViewSession from './pages/campaigns-id-viewSessions'
+import EditSession from './pages/campaigns-id-editSessions'
+
 
 function App() {
   return (
@@ -19,8 +22,11 @@ function App() {
           <Route path="signup" element={<SignUp />} />
           <Route path="signin" element={<SignIn />} />
           <Route path="campaigns" element={<Campaigns />} />
-          <Route path="stories" element={<Stories />} /> 
-          <Route path="add-story" element={<Create />} /> 
+          <Route path="campaigns/addsession" element={<AddSession />} /> 
+          <Route path="campaigns/create" element={<NewCampaign />} /> 
+          <Route path="campaigns/viewSessions/id" element={<ViewSession />} /> 
+          <Route path="campaigns/${campaignId}/editSessions" element={<EditSession />} /> 
+          
         </Routes>
       </div>
   );

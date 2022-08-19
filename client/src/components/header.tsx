@@ -46,15 +46,20 @@ function ColorSchemesExample() {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand>
-              <Link className="navbar-brand" to="/">The Lore of Yore</Link>
+              <Link className="navbar-brand" to="/">
+                The Lore of Yore
+                <Navbar.Text className="campaign-page">
+                {location.pathname === "/campaigns" ? <span> : Campaign Page</span> : null}
+                  </Navbar.Text>
+              </Link>
           </Navbar.Brand>
 
-          <Nav className="mx-auto">
+          {/* <Nav className="mx-auto">
             <Navbar.Text>
             {location.pathname === "/campaigns" ? 
                 <span>Evil Campaign</span> : null}
               </Navbar.Text>
-            </Nav>
+            </Nav> */}
             
           <Nav className="ms-auto mb-2 mb-lg-0">
             <Nav.Link>

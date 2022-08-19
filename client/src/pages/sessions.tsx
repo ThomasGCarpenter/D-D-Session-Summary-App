@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 
 function Stories () {
-
+  
   const [answers, setAnswers] = useState<any[]>([])
+
   // const answers = [{ answer: 'Tom Rocks'}]
   useEffect(() => {
     getFeedback();
@@ -22,6 +23,11 @@ function Stories () {
         });
 
   return (
+    <div>
+        <button className="btn btn-success m-1">
+    <Link className="nav-link" to="/add-story">Add Story!</Link>
+   </button>
+    
   <table className="table">
     <thead>
       <tr>
@@ -33,23 +39,23 @@ function Stories () {
     </thead>
     <tbody>
       {answers.map((answer) => {
+        
         return (
           <tr>
             <th scope="row">1</th>
             <td>{answer.answer}</td>
-            <td></td>
+            <td>{answer.date}</td>
             <td></td>
           </tr>
         )
-      })
-    }    </tbody>
+      })  
+    }    
+    </tbody>
 
-   <button className="btn btn-success m-1">
-    <Link className="nav-link" to="/add-story">Add Story!</Link>
-   </button>
+ 
     
   </table>
-  //  <Link className="nav-link" to="/stories">Stories</Link>
+  </div>
 )}
 
 export default Stories;

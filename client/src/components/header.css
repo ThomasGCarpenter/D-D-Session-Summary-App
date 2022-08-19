@@ -5,9 +5,9 @@
 }
 
 
-
-.mx-auto {
-    font: small-caps bold 24px/1 sans-serif;
-    color: rgb(185, 83, 119);
-   
+.navbar-brand .campaign-page {
+    font: italic 1.2em "Fira Sans", serif;
+    font-weight: bold;
+    font-size: .75em;
+    color: grey;
 }

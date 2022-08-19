@@ -1,28 +1,17 @@
+body > #root > div {
+    height: 100vh;
+  }
 
-.campaigns .container {
+.header-row  {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    
-    
+    justify-content: space-around;
+    border-bottom: 3px solid #1b9af0;
+    width: 100%;
+    height: 15vh;
+    margin: 20px auto;
 }
 
-.campaigns .campaign_module {
-    border: 1px solid #2d2d2d;
-    height: 300px;
-    margin: 20px;
-    width: 300px;
-    
-
-    /* background-image: url('../images/book-cover.jpg');
-    background-size: contain; */
-}
-
-.campaigns .nav-link {
-    text-decoration: underline;
-}
-
-.campaigns .nav-link:hover {
-    color: red;
+.position-relative .circle-button {
+  border-radius: 50%;
+  position: relative;
 }
