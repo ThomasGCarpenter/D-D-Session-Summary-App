@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import './campaigns.css'
+import { getPreEmitDiagnostics } from 'typescript';
 
 
 function Campaigns () {
   
   const [results, setResults] = useState<any[]>([])
-  const id = useParams()
+  const { title } = useParams()
   
 
   useEffect(() => {
@@ -18,31 +19,20 @@ function Campaigns () {
     axios
       .get("http://localhost:9444/campaigns/create")
       .then((response) => {
-        // console.log(response.data);
-        setResults(response.data.result)
+        console.log(response.data);
+        setResults(response.data.campaignData)
+        console.log()
       })
         .catch((error) => {
           console.log(`We have a server error`, error);
         });
 
-    // const getUrl = async () => {
-        
-    //     await axios
-    //             .get(`http://localhost:9444/campaigns/viewSessions/${id}`)
-    //             .then((response) => {
-    //                 // console.log(response.data);
-    //                 console.log(response.data.id)
-    //             })
-    //                 .catch((error) => {
-    //                 console.log(`We have a server error`, error);
-    //                 });
-    // }
 
   return (
     <div className="position-relative"style = {{height:"100vh"}}>
         <header className="header-row">
            <div>
-            <button className="btn btn-success position-absolute top-0 start-90">
+                <button className="btn btn-success position-absolute top-0 start-90">
                     <Link className="nav-link" to="/campaigns/create">Create Campaign!</Link>
                 </button>
             </div>
@@ -59,26 +49,28 @@ function Campaigns () {
                 </tr>
             </thead>
             <tbody>
-                {results.map((title) => {
+                {results.map((campaign, index) => {
                     return (
                     <tr>
                         <td>
                             <div>
-                                <button type="button" className="btn btn-outline-secondary btn-sm">Edit</button>
+                              <button type="button" className="btn btn-outline-primary btn-sm">
+                                <Link className="nav-link" to= {`/campaigns/${campaign._id}/edit`}>Edit Campaign</Link>
+                              </button>
                             </div>
                         </td>
-                        <td>{title.title}</td>
-                        <td>{title.players}</td>
-                        <td>{title.startDate}</td>
+                        <td>{campaign.title}</td>
+                        <td>{campaign.players}</td>
+                        <td>{campaign.startDate}</td>
+                        
                         <td>
                             <div>
-                                {/* <button type="button" className="btn btn-outline-primary btn-sm" onClick={() => getUrl()}   >View Sessions!                           
-                                </button> */}
+                               
                                  <button type="button" className="btn btn-outline-primary btn-sm">
-                                    <Link className="nav-link" to="/campaigns/viewSessions/id">View Sessions</Link>
+                                    <Link className="nav-link" to= {`/campaigns/${campaign._id}/sessions`}>View Sessions</Link>
                                 </button>
                                 <button type="button" className="btn btn-outline-danger btn-sm">
-                                    <Link className="nav-link" to="/campaigns/addsession">Add Session</Link>
+                                    <Link className="nav-link" to= {`/campaigns/${campaign._id}/addsession`}>Add Session</Link>
                                 </button>
                             </div>
                         </td>                
@@ -87,11 +79,12 @@ function Campaigns () {
       })  
     }    
     </tbody>
-
- 
-    
   </table>
   </div>
 )}
 
 export default Campaigns; 
+
+
+
+

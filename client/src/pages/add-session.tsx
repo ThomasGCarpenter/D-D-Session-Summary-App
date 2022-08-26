@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 import { stringify } from 'querystring';
 
 function CreateSession () {
 
+    const { id } = useParams()
     const [title, setTitle] = useState('')
     const [date, setDate] = useState('')
     const [characters, setCharacters] = useState('')
@@ -16,6 +17,7 @@ function CreateSession () {
   
   
       const sessionData = {
+        session_id: "string",
         title,
         date,
         characters,
@@ -24,7 +26,7 @@ function CreateSession () {
       }
   
       try {
-        const result = await axios.post("http://localhost:9444/campaigns/addsession", sessionData)
+        const result = await axios.post(`http://localhost:9444/campaigns/${id}/addsession`, sessionData)
         const data = result.data
         console.log('RESULT OF ADD STORY', data);
       } catch (err) {
@@ -92,7 +94,7 @@ function CreateSession () {
 
         </div>
        <button type="submit" className="btn btn-success m-3">
-       <Link className="nav-link" to="/campaigns/viewSessions/id">Add to Lore</Link>
+       <Link className="nav-link" to={`/campaigns/${id}/sessions`}>Add to Lore</Link>
        </button>
       </form>
     )

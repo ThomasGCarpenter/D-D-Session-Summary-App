@@ -1,75 +1,97 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
 function Session () {
-  
-  const [sessionData, setSessionData] = useState<any[]>([])
+  const { id }  = useParams();
+  const [sessionInfo, setSessionData] = useState<any[]>([])
   const [campaignData, setCampaignData] = useState<any[]>([])
 
   useEffect(() => {
-    getFeedback();
+    getViewSessions();
     getCampaignData();
+  
   }, []);
 
-  const getFeedback = () =>
+ 
+  const getViewSessions =  () =>
     axios
-      .get("http://localhost:9444/campaigns/addsession")
-      .then((response) => {
-        // console.log(response.data);
-        setSessionData(response.data.sessionData)
-      })
+    .get(`http://localhost:9444/campaigns/${id}/sessions`)
+    
+    .then((response) => {
+      console.log(id)
+      console.log(response);
+      // console.log(response.data.sessionData)
+      setSessionData(response.data.sessionData)
+      
+
+  })
         .catch((error) => {
           console.log(`We have a server error`, error);
         });
 
-    const getCampaignData = () =>
-        axios
+  const getCampaignData = () =>
+    axios
           .get("http://localhost:9444/campaigns/create")
           .then((response) => {
-            console.log(response.data);
-            setCampaignData(response.data.result)
+            // console.log(response.data);
+            setCampaignData(response.data.campaignData)
           })
             .catch((error) => {
               console.log(`We have a server error`, error);
             });   
 
-    
-
+  let rowCounter = 1;
+ 
   return (
     <div>
-        {campaignData.map((title) => {
+        {/* {campaignData.map((campaign) => {
             return(
         <div className="position-relative">
             <h3>
-                {title.description}
+                {campaign.description}
             </h3>
         </div>
             )
         })  
-      }  
+      }   */}
         <button className="btn btn-success m-1">
-            <Link className="nav-link" to="/campaigns/addsession">Add A Session to "Put Campaign Title Here"!</Link>
+            <Link className="nav-link" to={`/campaigns/${id}/addsession`}>Add A Session to "Put Campaign Title Here"!</Link>
         </button>
     
     <table className="table">
             <thead>
                 <tr>
+                    <th scope="col">Edit</th>
                     <th scope="col">Chapter</th>
                     <th scope="col">Title</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Author(s)</th>
+                    <th scope="col">View Session</th>
                 </tr>
             </thead>
         <tbody>
-        {sessionData.map((title) => {
+        {sessionInfo.map((session) => {
             return (
-                <tr>
-                    <th scope="row">1</th>
-                    <td>{title.title}</td>
-                    <td>{title.date}</td>
-                    <td></td>
-                </tr>
+              <tr>
+              
+               <td>
+                  <div>
+                    <button type="button" className="btn btn-outline-primary btn-sm">
+                      <Link className="nav-link" to= {`/campaigns/${session.session_id}/editsession`}>Edit Session</Link>
+                    </button>
+                  </div>
+                </td>
+                <td>{rowCounter++}</td>
+                    <td>{session.title}</td>
+                    <td>{session.date}</td>
+                    <td>
+                    <div>
+                    <button type="button" className="btn btn-outline-primary btn-sm">
+                      <Link className="nav-link" to= {`/campaigns/${session.session_id}/session/${session._id}`}>View Session</Link>
+                    </button>
+                  </div>
+                    </td>
+              </tr>
             )
          })  
         }    
