@@ -2,6 +2,7 @@ import Fastify from 'fastify'
 import MongoDBPlugin from '@fastify/mongodb'
 import cors from '@fastify/cors'
 import { ObjectId } from 'mongodb'
+import bcrypt from 'bcrypt'
 
 const fastify = Fastify({
   logger: true
@@ -122,18 +123,51 @@ fastify.post('/campaigns/create', async (request, reply) => {
    }
 })
 
+fastify.post('/signup', 
+// {
+//   "$schema": { 
+//     "body": {
+//       "type": 'object', "required": ['username', 'password'], "properties": {
+//         "username": { "type": 'string '},
+//         "password": { "type": 'string'}
+//       }
+//     }
+//   }
+// }, 
+
+async (request, reply) => {
+  const userData = fastify.mongo.client.db('mydb').collection('userData')
+  var passwordHash = request.body.password
+  const hashed = await bcrypt.hash(passwordHash, 12); 
+
+  const userDataModel = {
+  username: request.body.username,
+  password: hashed
+  }
+  try {
+    userData.insertOne(userDataModel)
+    console.log
+    return console.log(userData)
+  } catch(err){
+    console.log(err)
+  }
+  
+})
+
+
+
 //**************************************************************************************************** */
 fastify.put('/campaigns/:id/edit', async (request, reply) => {
   const campaignEdit = fastify.mongo.client.db('mydb').collection('campaign')
 
   try {
-    await campaignEdit.findOneAndUpdate({ _id: ObjectId(request.params.id) }, { 
+    await campaignEdit.findOneAndUpdate({ _id: ObjectId(request.params.id) }, {$set :{
       title: request.body.title, 
       players: request.body.players, 
       startDate: request.body.startDate,
       description: request.body.description
+    }} , {returnOriginal:false})
     
-    }, {returnOriginal:false})
     return { code: 200, message: 'Adding campaignDataModel succeeded' }
   } catch(err){
    console.log(err)

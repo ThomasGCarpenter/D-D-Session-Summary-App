@@ -1,14 +1,34 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import './signup.css';
+import axios from 'axios';
 
 function SignUp () {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    console.log(username)
+
+    const handleFormSubmit = async (evt: any) => {
+        evt.preventDefault()
+    
+    
+        const userData = {
+            username,
+            password
+        }
+    
+        try {
+          const result = await axios.post('http://localhost:9444/signup', userData)
+          const data = result.data
+          console.log('RESULT OF ADD STORY', data);
+        } catch (err) {
+          console.log(err)
+        }
+      }
     return (
         <div className='SignUp'>
             <div className="container">
-                <form className = 'card p-3'>
+                <form className = 'card p-3' onSubmit={handleFormSubmit}>
                     <div className="module">
                         <h3>Sign Up!</h3>
                     </div>
@@ -35,7 +55,9 @@ function SignUp () {
                        />
                     </div>
                     
-                    <button type="submit" className="btn btn-success m-1">Submit</button>
+                    <button type="submit" className="btn btn-success m-1">
+                    <Link className="nav-link" to={`/`}>Sign Up!</Link>
+                    </button>
                 </form>
             </div>
         </div>

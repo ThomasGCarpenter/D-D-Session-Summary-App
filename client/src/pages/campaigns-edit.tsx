@@ -33,12 +33,22 @@ function CampaignEdit () {
           .catch((error) => {
             console.log(`We have a server error`, error);
           });
-       
+      
+   
+        
     const handleFormSubmit = async (evt: any) => {
       evt.preventDefault()
   
+  
+      const campaignData = {
+        title,
+        players,
+        startDate,
+        description
+      }
+  
       try {
-        const result = await axios.put(`http://localhost:9444/campaigns/${id}/edit`)
+        const result = await axios.put(`http://localhost:9444/campaigns/${id}/edit`, campaignData)
         const data = result.data
         console.log('RESULT OF ADD STORY', data);
       } catch (err) {
