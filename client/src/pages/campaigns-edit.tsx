@@ -58,7 +58,15 @@ function CampaignEdit () {
 
     const [editCampaign,  setEditCampaign] = useState<any[]>([])
 
- 
+    const deleteCampaign = async () => {
+      try {  
+        const resultOfDelete= await axios.delete(`http://localhost:9444/campaigns/${id}/delete`)
+        const data = resultOfDelete.data
+        console.log('RESULT OF Delete', data);
+      } catch(err){
+        console.log(err)
+      }
+    }
 
     return (
       <form className="Create" onSubmit={handleFormSubmit}>
@@ -105,10 +113,16 @@ function CampaignEdit () {
                         onChange={(evt) => setDescription(evt.target.value)}
                         value={description}
                     />
-        
-                    <button type="submit" className="btn btn-success m-3">
-                        <Link className="nav-link" to="/campaigns">Edit Campaign</Link>
-                    </button>
+                   <div>
+                      <button type="submit" className="btn btn-success m-3">
+                          <Link className="nav-link" to="/campaigns">Edit Campaign</Link>
+                      </button>
+                    </div>
+                    <div>
+                      <button type="submit" className="btn btn-success m-3" onClick={deleteCampaign}>
+                          <Link className="nav-link" to="/">Delete Campaign</Link>
+                      </button>
+                    </div>
                 </div>
        )
     })  

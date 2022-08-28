@@ -66,7 +66,7 @@ function ColorSchemesExample() {
               <Link className="nav-link" to="/campaigns">Campaigns</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link className="nav-link" to="/signin">Sign In</Link>
+              <Link className="nav-link" to="/login">Log In</Link>
             </Nav.Link>
             <Nav.Link href="#pricing">
             <Link className="nav-link" to="/signup">Sign Up</Link>

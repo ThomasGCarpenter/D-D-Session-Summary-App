@@ -154,6 +154,27 @@ async (request, reply) => {
   
 })
 
+fastify.post('/login', async (request, reply) => {
+  const user =  fastify.mongo.client.db('mydb').collection('userData');
+
+  try {
+    const userFind = await user.findOne({ username: request.body.username })
+    const isValidPassword = await bcrypt.compare(request.body.password.toString(), userFind.password)
+    if(!isValidPassword){
+        console.log('password not match')
+      } else if (isValidPassword){
+        console.log('SUCCCCCCCCESSSSSSSSSSSSSSs') 
+      }
+      return { code: 200, message: 'Adding campaignDataModel succeeded' }
+
+
+  } catch(err){
+    console.log(err)
+    return { code: 500, message: 'Adding campaignDataModel failed' }
+
+  }
+})
+
 
 
 //**************************************************************************************************** */
@@ -174,7 +195,18 @@ fastify.put('/campaigns/:id/edit', async (request, reply) => {
    return { code: 500, message: 'Adding campaignDataModel failed' }
   }
 })
+//**************************************************************************************************** */
+fastify.delete('/campaigns/:id/delete', async(request, reply) => {
+  const campaignDocuments = fastify.mongo.client.db('mydb').collection('campaign')
 
+  try {
+    await campaignDocuments.deleteOne({ _id: ObjectId(request.params.id) })
+    return { code: 200, message: 'Delete Campaign succeeded' }
+  }  catch(err){
+    console.log(err)
+    return { code: 500, message: 'Delete Campaign failed' }
+   }
+})
 
 
 const start = async () => {

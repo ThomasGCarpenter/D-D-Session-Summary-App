@@ -55,7 +55,7 @@ function Campaigns () {
                         <td>
                             <div>
                               <button type="button" className="btn btn-outline-primary btn-sm">
-                                <Link className="nav-link" to= {`/campaigns/${campaign._id}/edit`}>Edit Campaign</Link>
+                                <Link className="nav-link" to= {`/campaigns/${campaign._id}/edit`}>Edit/Delete Campaign</Link>
                               </button>
                             </div>
                         </td>

@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Header from './components/header'
 import { Routes, Route } from "react-router-dom" 
 import SignUp from './pages/sign-up'
-import SignIn from './pages/sign-in'
+import LogIn from './pages/login'
 import AddSession from './pages/add-session'
 import Campaigns from './pages/campaigns'
 import NewCampaign from './pages/campaigns-create'
@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Welcome />}/>
           <Route path="signup" element={<SignUp />} />
-          <Route path="signin" element={<SignIn />} />
+          <Route path="login" element={<LogIn />} />
           <Route path="campaigns" element={<Campaigns />} />
           <Route path="campaigns/:id/addsession" element={<AddSession />} /> 
           <Route path="campaigns/create" element={<NewCampaign />} /> 
