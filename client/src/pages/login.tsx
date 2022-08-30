@@ -7,6 +7,8 @@ import axios from 'axios';
 function SignIn () {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [user, setUser] = useState()
+
 
     const handleFormSubmit = async (evt: any) => {
         evt.preventDefault()
@@ -19,8 +21,13 @@ function SignIn () {
     
         try {
           const result = await axios.post('http://localhost:9444/login', userData)
-          const data = result.data
-          console.log('RESULT of LogIn', data);
+          console.log('TTTTTTTTTTTTTTt', result)
+          console.log("HHHHHHHHHHHHHH", result.data)
+          setUser(result.data)
+          // store the user in localStorage
+          localStorage.setItem('user', JSON.stringify(result.data))
+          console.log(localStorage)
+          console.log(result.data)
         } catch (err) {
           console.log(err)
         }

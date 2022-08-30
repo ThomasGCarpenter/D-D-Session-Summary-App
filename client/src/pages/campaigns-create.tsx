@@ -11,6 +11,8 @@ function CampaignCreate () {
     const [startDate, setStartDate] = useState('')
     const [description, setDescription] = useState('')
 
+    let userObj= JSON.parse(localStorage.getItem('user')|| '{}')
+   
     const handleFormSubmit = async (evt: any) => {
       evt.preventDefault()
   
@@ -19,13 +21,17 @@ function CampaignCreate () {
         title,
         players,
         startDate,
-        description
+        description,
+        userObj
       }
   
       try {
+        if(userObj.token){
         const result = await axios.post("http://localhost:9444/campaigns/create", campaignData)
+        console.log(campaignData)
         const data = result.data
         console.log('RESULT OF ADD STORY', data);
+        }
       } catch (err) {
         console.log(err)
       }

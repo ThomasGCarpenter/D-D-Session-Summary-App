@@ -77,7 +77,7 @@ function Session () {
                <td>
                   <div>
                     <button type="button" className="btn btn-outline-primary btn-sm">
-                      <Link className="nav-link" to= {`/campaigns/${session.session_id}/editsession`}>Edit Session</Link>
+                      <Link className="nav-link" to= {`/campaigns/${session.session_id}/edit/${session._id}`}>Edit Session</Link>
                     </button>
                   </div>
                 </td>
