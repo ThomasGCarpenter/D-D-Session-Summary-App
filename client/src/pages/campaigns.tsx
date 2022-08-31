@@ -29,58 +29,93 @@ function Campaigns () {
 
 
   return (
-    <div className="position-relative"style = {{height:"100vh"}}>
-        <header className="header-row">
-           <div>
-                <button className="btn btn-success position-absolute top-0 start-90">
-                    <Link className="nav-link" to="/campaigns/create">Create Campaign!</Link>
-                </button>
-            </div>
-        </header>
+    <div className='container'>
+      <div className='row border-bottom border-primary border-2 my-4 pb-3'>
+        <div className="col-9">
+          <h3 className='my-campaigns'>
+            My Campaigns
+          </h3>
+        </div>
+        <div className='col-3'>
+          <button className="button-create">
+            <Link className="nav-link" to="/campaigns/create">Create Campaign!</Link>
+          </button>
+        </div>
+      </div> 
+      <div className='row'>
+        <div className='col align-self-start mt-2'>
+          <h4 className='active-campaigns'>
+            Active/Inactive Campaigns 
+          </h4>
+        </div>
+      </div>
         
-        <table className="table border-dark table-bordered">
-            <thead className="thead-dark">
-                <tr>
-                    <th scope="col">Edit Campaign</th>
-                    <th scope="col">Campaign Title</th>
-                    <th scope="col">Players</th>
-                    <th scope="col">Start Date</th>
-                    <th scope="col">View/Add Session</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div className="row">
+          
                 {results.map((campaign, index) => {
                     return (
-                    <tr>
-                        <td>
-                            <div>
-                              <button type="button" className="btn btn-outline-primary btn-sm">
-                                <Link className="nav-link" to= {`/campaigns/${campaign._id}/edit`}>Edit/Delete Campaign</Link>
-                              </button>
-                            </div>
-                        </td>
-                        <td>{campaign.title}</td>
-                        <td>{campaign.players}</td>
-                        <td>{campaign.startDate}</td>
+                      <div className="col-4 mx-auto">
+                        <div className='card'>
+                          <div>
+                          <button className="button-circle">
+                              <Link className="nav-link" to= {`/campaigns/${campaign._id}/edit`}>
+                                Edit
+                              </Link>
+                            </button>
+                            <div className='row'>
+                                <div className="col-6">
+                                  <p className='campaign-title'>{campaign.title}</p>
+                                </div>
+                                </div>
                         
-                        <td>
-                            <div>
-                               
-                                 <button type="button" className="btn btn-outline-primary btn-sm">
-                                    <Link className="nav-link" to= {`/campaigns/${campaign._id}/sessions`}>View Sessions</Link>
-                                </button>
-                                <button type="button" className="btn btn-outline-danger btn-sm">
-                                    <Link className="nav-link" to= {`/campaigns/${campaign._id}/addsession`}>Add Session</Link>
-                                </button>
-                            </div>
-                        </td>                
-                    </tr>
+                            
+                              </div>
+                              <p className='started'> 
+                                campaign started {campaign.startDate}
+                              </p>
+                              
+                                <div className='players'> 
+                                Players: {campaign.players}
+                                        </div>
+                              
+                           
+                              <div className='role'>
+                                Role:
+                              </div>
+                              <div className='dm'>
+                                DM:
+                              </div>
+                                <div className='row'>
+                                    <div className='buttons-bottom'>
+                                        <button type="button" className="btn btn-outline-primary btn-sm">
+                                            <Link className="nav-link" to= {`/campaigns/${campaign._id}/sessions`}>View Sessions</Link>
+                                        </button>
+                                       
+                                    
+                                        
+
+                                        <button type="button" className="btn btn-outline-danger btn-sm">
+                                            <Link className="nav-link" to= {`/campaigns/${campaign._id}/addsession`}>Add Session</Link>
+                                        </button>
+                                        </div>
+                                        </div>
+                                        
+
+                                     
+                            </div>    
+                          </div>        
+                      
                     )
+                    
       })  
-    }    
-    </tbody>
-  </table>
+      
+    } 
+                <div>
+   
+    </div>
+    </div>
   </div>
+  
 )}
 
 export default Campaigns; 

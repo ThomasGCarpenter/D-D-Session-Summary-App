@@ -20,7 +20,7 @@ function Welcome() {
                     <div className="col-xs-12 col-sm-6">
                         <div className="welcome__module2">
                             <div className="signIn">
-                                <Link className="signIn_link" to="/login">Log In!</Link>
+                                <Link className="signIn_link" to="/login">Log In/Log out!</Link>
                             </div>
                             <div className="signUn">
                                 <Link className="signUp_link" to="/signup">Sign Up!</Link>

@@ -12,6 +12,7 @@ function CampaignCreate () {
     const [description, setDescription] = useState('')
 
     let userObj= JSON.parse(localStorage.getItem('user')|| '{}')
+    
    
     const handleFormSubmit = async (evt: any) => {
       evt.preventDefault()

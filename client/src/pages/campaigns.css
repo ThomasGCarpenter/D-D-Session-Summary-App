@@ -1,17 +1,115 @@
-body > #root > div {
-    height: 100vh;
-  }
+.container {
+  max-width:100%;
+  
 
-.header-row  {
-    display: flex;
-    justify-content: space-around;
-    border-bottom: 3px solid #1b9af0;
-    width: 100%;
-    height: 15vh;
-    margin: 20px auto;
+}
+.container .button-create {
+  background-color:#03040B; 
+  border-style: double;
+  border-width: 1.5px;
+  border-color: blue;
+  color: white;
+  padding: 3px;
+  height: 9vh;
 }
 
-.position-relative .circle-button {
-  border-radius: 50%;
-  position: relative;
+.container .my-campaigns {
+  font-size: 2.5em;
+  color: rgb(99, 43, 43);
+
 }
+
+.container .row .col-4 {
+  border-color:black ;
+   border-width: 30px;
+}
+
+.container .active-campaigns {
+  font-size: 1.9em;
+  color: rgb(99, 43, 43);
+}
+
+.container .card {
+  border-color:  rgb(162, 162, 243);
+  border-style: double;
+  border-width: 6px;
+  background: #F4F5FC;
+ 
+}
+
+.container .col-4 .started {
+  color: rgb(164, 161, 161);
+  text-align: center;
+  font-size: .8em;
+  margin: 4px;
+  padding: 3px;
+}
+
+.container .col-4 .button-circle {
+  width: 30px;
+  height: 30px;
+  margin-top: 3px;
+  margin-left: 6px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 9.5px;
+  line-height: 1.42857;
+  color: white;
+  background-color:rgb(53, 97, 242);
+  border-color:rgb(190, 190, 190);
+  border-width: 2px;
+  padding: 5px;
+}
+
+
+.container .col-4 .campaign-title {
+  font-weight: bold;
+  font: 1.2em "Fira Sans", serif;
+  font-size: 4vh;
+  width:100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+
+}
+
+.container .col-6 {
+  width: 100%;
+}
+
+
+.container .col-3 {
+  text-align: right;
+}
+
+.container .col-4 .players {
+  padding:10px;
+  margin: 3px;
+  font-weight: bold;
+  font: 1.2em "Fira Sans", serif;
+}
+
+
+.container .col-4 .role {
+  padding:10px;
+  margin: 3px;
+  font-weight: bold;
+  font: 1.2em "Fira Sans", serif;
+}
+
+
+.container .col-4 .dm {
+  padding:10px;
+  margin: 3px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  font: 1.2em "Fira Sans", serif;
+  border-bottom: thick double #32a1ce;
+}
+
+.container .col-4 .buttons-bottom {
+  padding:10px;
+  margin: 40px;
+
+}
+

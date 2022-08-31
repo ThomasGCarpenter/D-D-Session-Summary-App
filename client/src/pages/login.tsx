@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 import './signup.css';
@@ -7,8 +7,25 @@ import axios from 'axios';
 function SignIn () {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const [user, setUser] = useState()
+    const [user, setUser] = useState<any | null>(null);
 
+    //Check if a user has previously logged in
+    let userObj= JSON.parse(localStorage.getItem('user')|| '{}')
+    console.log(userObj)
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem("user");
+        if (loggedInUser) {
+          const foundUser = JSON.parse(loggedInUser);
+          setUser(foundUser);
+        }
+      }, []);
+
+      const handleLogout = () => {
+        setUser({});
+        setUsername("");
+        setPassword("");
+        localStorage.clear();
+      };
 
     const handleFormSubmit = async (evt: any) => {
         evt.preventDefault()
@@ -42,9 +59,8 @@ function SignIn () {
                     <div className="module">
                         <label></label>
                         <input 
-                            type="email" 
+                            type="text" 
                             className="form-control" 
-                            aria-describedby="emailHelp" 
                             placeholder="Username must be unique"
                             onChange={(evt) => setUsername(evt.target.value)}    
                             value={username}
@@ -65,6 +81,7 @@ function SignIn () {
                     <button type="submit" className="btn btn-success m-1">
                     <Link className="nav-link" to={`/`}>Login!</Link>
                     </button>
+                    <button type="submit" className='btn btn-danger m-1' onClick={handleLogout}>Log Out</button>
                 </form>
             </div>
         </div>
