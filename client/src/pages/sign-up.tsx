@@ -13,6 +13,7 @@ function SignUp () {
     
     
         const userData = {
+
             username,
             password
         }
@@ -35,9 +36,8 @@ function SignUp () {
                     <div className="module">
                         <label></label>
                         <input 
-                            type="email" 
-                            className="form-control" 
-                            aria-describedby="emailHelp" 
+                            type="text" 
+                            className="form-control"  
                             placeholder="Username must be unique"
                             onChange={(evt) => setUsername(evt.target.value)}    
                             value={username}

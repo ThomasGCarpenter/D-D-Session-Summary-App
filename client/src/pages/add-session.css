@@ -1,0 +1,28 @@
+.container .col-5 {
+    height: 40vh;
+    width: 60vh;
+    background-color: purple;
+}
+
+.container .button-add {
+    width: 60px;
+    height: 30px;
+    margin-top: 3px;
+    text-align: center;
+    font-size: 9.5px;
+    line-height: 1.42857;
+    color: white;
+    background-color:rgb(53, 97, 242);
+    border-color:rgb(190, 190, 190);
+    border-width: 2px;
+    padding: 5px;
+    margin-left: 120px;
+}
+
+.container .col-8 {
+    border-color: black;
+}
+
+.container .to-do {
+    text-align: center;
+}

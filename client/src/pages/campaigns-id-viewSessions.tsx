@@ -2,10 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 import axios from 'axios';
 
-function Session () {
+function Session (this: any) {
   const { id }  = useParams();
   const [sessionInfo, setSessionData] = useState<any[]>([])
   const [campaignData, setCampaignData] = useState<any[]>([])
+
+  // const [file, setFile] = useState<any[]>([])
+
+  // function handleChange(event: any) {
+  //   setFile(event.target.files[0])
+  // }
 
   useEffect(() => {
     getViewSessions();
@@ -41,32 +47,49 @@ function Session () {
               console.log(`We have a server error`, error);
             });   
 
-  let rowCounter = 1;
- 
+
+
+      // const handleFormSubmit = async (evt: any) => {
+      //         evt.preventDefault()
+                 
+      //         // const formData = new FormData();
+      //         // formData.append('file', file);
+              
+
+      //         console.log("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL", formData)
+      //          axios
+      //             .post("http://localhost:9444/campaigns/upload", formData, {
+      //               headers: { "Content-Type": "multipart/form-data" }
+      //             })
+      //                       .then((res: any) => {
+      //                         console.log(res);
+      //                       })
+      //                       .catch((err: any) => {
+      //                         console.log(err);
+      //                       });
+                      
+      //                 }
+            
   return (
     <div>
-        {/* {campaignData.map((campaign) => {
-            return(
-        <div className="position-relative">
-            <h3>
-                {campaign.description}
-            </h3>
-        </div>
-            )
-        })  
-      }   */}
+  
         <button className="btn btn-success m-1">
             <Link className="nav-link" to={`/campaigns/${id}/addsession`}>Add A Session to "Put Campaign Title Here"!</Link>
         </button>
+
+        {/* <form action="/campaigns/upload" method="post" encType="multipart/form-data" onSubmit={handleFormSubmit}>
+        <input type="file" onChange={handleChange}/>
+           <button type="submit">Submit</button>
+        </form> */}
     
     <table className="table">
             <thead>
                 <tr>
                     <th scope="col">Edit</th>
-                    <th scope="col">Chapter</th>
                     <th scope="col">Title</th>
                     <th scope="col">Date</th>
                     <th scope="col">View Session</th>
+        
                 </tr>
             </thead>
         <tbody>
@@ -81,7 +104,7 @@ function Session () {
                     </button>
                   </div>
                 </td>
-                <td>{rowCounter++}</td>
+                <td></td>
                     <td>{session.title}</td>
                     <td>{session.date}</td>
                     <td>
