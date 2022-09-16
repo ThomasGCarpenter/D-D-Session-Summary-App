@@ -64,13 +64,12 @@
 
 .container .col-4 .campaign-title {
   font-weight: bold;
-  font: 1.2em "Fira Sans", serif;
-  font-size: 4vh;
+  font: "Fira Sans", serif;
+  font-size: 5vh;
   width:100%;
   text-align: center;
   margin: 0;
   padding: 0;
-
 }
 
 .container .col-6 {

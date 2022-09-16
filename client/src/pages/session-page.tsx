@@ -29,28 +29,48 @@ function SessionPage () {
 
 
     return(
-        <div className='session'>
-           
+        <div className='container'>
                 {displaySession.map((session) => {
                     return (
-                <div className='container'>
-                    <div className='row'>
-                        <div className='col-sm'>
-                            {session.title}
-                        </div>
-                        <div className='col-sm'>{session.date}</div>
-                        <div className='col-sm'>{session.characters}</div>
+                        <div className='row'>
+                            <div className='col-4'>
+                                <div>
+                                    <h3>To Do List</h3>
+                                        <table>
+                                            <tr>
+                                                Long Term
+                                            </tr>
+                                        </table>
+                                </div>
+                            </div>
+                                    <div className='col-8'>
+                                        <h1>{session.title}</h1>
+                                    </div>
 
-                    </div>
-                    
-                    {/* <div>{session.date}</div> */}
-                    <div>{session.knowledge}</div>
-                    <div>{session.moments}</div>
-                </div>
-                
-                       )
-                    })  
-                   }  
+                                    
+                                <div className='col-sm'>{session.date}</div>
+                                <div className='col-sm'>{session.characters}</div>
+
+                               
+                            <div>{session.moments}</div>
+                            <div className='row'>
+                                <div className='col-7'>
+                                    {session.knowledge}
+                                </div>
+                                <div className='col-5'>
+                                    {session.moments}
+                                </div>
+
+                            </div>
+                            <div className='row'>
+                                {session.storylines}
+                            </div>
+                        </div>
+                             
+                          
+                            )
+                            })  
+                        }  
             
      
         </div>

@@ -1,0 +1,61 @@
+.container {
+    max-width:100%;
+  max-height: 100%;
+  }
+
+.container .headers {
+    padding-bottom: 0px;
+}
+
+  .container .button-lore {
+    background-color:#03040B; 
+    border-style: double;
+    border-width: 1.5px;
+    border-color: blue;
+    color: white;
+    padding: 3px;
+    height: 9vh;
+    
+  }
+  
+
+  .container .button-private {
+    background-color:#500404; 
+    border-style: double;
+    border-width: 1.5px;
+    border-color: black;
+    color: white;
+    padding: 3px;
+    height: 9vh;
+    text-align: center;
+  }
+
+  .container .your-sessions {
+    text-align: center;
+    font-size: 2.5em;
+    color: rgb(99, 43, 43);
+    margin-top: 0px;
+  }
+
+  .container .thead {
+    background-color: rgb(182, 182, 222);
+    text-align: center;
+  }
+
+  .container .primary {
+    color: black;
+    font-weight: bold;
+  }
+
+  .container .sessions {
+    margin-top: 0px;
+  }
+
+  .container .row-info {
+    text-align: center;
+  }
+
+.container .table {
+    margin: auto;
+    width: 50%; 
+ }
