@@ -44,7 +44,7 @@ function CreateSession () {
      
     return (
       
-      <div>
+      <div className='container'>
         <div className='row border-bottom border-primary border-2 my-4 pb-3'>
         <div className="col-9">
           <h3 className='my-campaigns'>
@@ -52,7 +52,7 @@ function CreateSession () {
           </h3>
         </div>
         <div className='col-3'>
-            <button type="submit" className="btn btn-success m-3">
+            <button type="submit" className="button-add">
                 <Link className="nav-link" to={`/campaigns/${id}/sessions`}>Add to Lore</Link>
             </button>
         </div>
@@ -60,7 +60,7 @@ function CreateSession () {
 
       
       <form className="Story" onSubmit={handleFormSubmit}>
-        <div className="container">
+        
           <div className='row'>
             <div className='col-7 border border-2 border-dark'>
               <div>
@@ -70,7 +70,7 @@ function CreateSession () {
                 <div className='long-term'>
                   Long Term 
                   <input 
-              type="text" 
+              type="textarea" 
               className="form-control" 
               placeholder="Answer" 
               onChange={(evt) => setTitle(evt.target.value)}
@@ -84,7 +84,7 @@ function CreateSession () {
                 <div className='short-term'>
                   Short Term 
                   <input 
-              type="text" 
+              type="textarea" 
               className="form-control" 
               placeholder="Answer" 
               onChange={(evt) => setTitle(evt.target.value)}
@@ -168,7 +168,7 @@ function CreateSession () {
           onChange={(evt) => setStorylines(evt.target.value)}
           value={storylines}
          />
-        </div>
+        
   
       </form>
       </div>
