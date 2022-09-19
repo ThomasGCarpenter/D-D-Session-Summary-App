@@ -1,28 +1,28 @@
 .container .col-5 {
-    height: 40vh;
-    width: 60vh;
-    background-color: purple;
+  height: 40vh;
+  width: 60vh;
+  background-color: purple;
 }
 
 .button-add {
-    background-color:#03040B; 
-    border-style: double;
-    border-width: 1.5px;
-    border-color: blue;
-    color: white;
-    padding: 3px;
-    height: 9vh;
-  }
+  background-color: #03040b;
+  border-style: double;
+  border-width: 1.5px;
+  border-color: blue;
+  color: white;
+  padding: 3px;
+  height: 9vh;
+}
 
 .container .col-8 {
-    border-color: black;
+  border-color: black;
 }
 
 .container .to-do {
-    text-align: center;
+  text-align: center;
 }
 
 .container .my-campaigns {
-    font-size: 2.5em;
-    color: rgb(99, 43, 43);
+  font-size: 2.5em;
+  color: rgb(99, 43, 43);
 }

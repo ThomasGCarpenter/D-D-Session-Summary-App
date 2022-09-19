@@ -1,10 +1,8 @@
 .container {
-  max-width:100%;
-  
-
+  max-width: 100%;
 }
 .container .button-create {
-  background-color:#03040B; 
+  background-color: #03040b;
   border-style: double;
   border-width: 1.5px;
   border-color: blue;
@@ -16,12 +14,11 @@
 .container .my-campaigns {
   font-size: 2.5em;
   color: rgb(99, 43, 43);
-
 }
 
 .container .row .col-4 {
-  border-color:black ;
-   border-width: 30px;
+  border-color: black;
+  border-width: 30px;
 }
 
 .container .active-campaigns {
@@ -30,17 +27,16 @@
 }
 
 .container .card {
-  border-color:  rgb(162, 162, 243);
+  border-color: rgb(162, 162, 243);
   border-style: double;
   border-width: 6px;
-  background: #F4F5FC;
- 
+  background: #f4f5fc;
 }
 
 .container .col-4 .started {
   color: rgb(164, 161, 161);
   text-align: center;
-  font-size: .8em;
+  font-size: 0.8em;
   margin: 4px;
   padding: 3px;
 }
@@ -55,18 +51,17 @@
   font-size: 9.5px;
   line-height: 1.42857;
   color: white;
-  background-color:rgb(53, 97, 242);
-  border-color:rgb(190, 190, 190);
+  background-color: rgb(53, 97, 242);
+  border-color: rgb(190, 190, 190);
   border-width: 2px;
   padding: 5px;
 }
-
 
 .container .col-4 .campaign-title {
   font-weight: bold;
   font: "Fira Sans", serif;
   font-size: 5vh;
-  width:100%;
+  width: 100%;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -76,29 +71,26 @@
   width: 100%;
 }
 
-
 .container .col-3 {
   text-align: right;
 }
 
 .container .col-4 .players {
-  padding:10px;
+  padding: 10px;
   margin: 3px;
   font-weight: bold;
   font: 1.2em "Fira Sans", serif;
 }
-
 
 .container .col-4 .role {
-  padding:10px;
+  padding: 10px;
   margin: 3px;
   font-weight: bold;
   font: 1.2em "Fira Sans", serif;
 }
 
-
 .container .col-4 .dm {
-  padding:10px;
+  padding: 10px;
   margin: 3px;
   padding-bottom: 15px;
   font-weight: bold;
@@ -107,8 +99,6 @@
 }
 
 .container .col-4 .buttons-bottom {
-  padding:10px;
+  padding: 10px;
   margin: 40px;
-
 }
-
