@@ -1,34 +1,30 @@
 .navbar-brand {
-    font: italic 1.2em "Fira Sans", serif;
-    font-weight: bold;
-    font-size: 1.5em;
-    color:  #FCFBF4;
+  font: italic 1.2em "Fira Sans", serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #fcfbf4;
 }
-
-
-
 
 .navbar .icon {
-    content: url('../images/DND-ICON.png');
-    max-height: 7vh;
-    margin-left: 12px;
-    
+  content: url("../images/DND-ICON.png");
+  max-height: 7vh;
+  margin-left: 12px;
 }
 
-.navbar  {
-    background-color: #03040B; 
+.navbar {
+  background-color: #03040b;
 }
 
-.nav-item :nth-child(1){
-    color:  #FCFBF4;
-    font: italic 1.2em "Fira Sans", serif;
-    font-weight: bold;
-    font-size: 1em;
+.nav-item :nth-child(1) {
+  color: #fcfbf4;
+  font: italic 1.2em "Fira Sans", serif;
+  font-weight: bold;
+  font-size: 1em;
 }
 
-.nav-item :nth-child(2){
-    color:  #FCFBF4;
-    font: 1.2em serif;
-    font-weight: bold;
-    font-size: 1em;
+.nav-item :nth-child(2) {
+  color: #fcfbf4;
+  font: 1.2em serif;
+  font-weight: bold;
+  font-size: 1em;
 }
