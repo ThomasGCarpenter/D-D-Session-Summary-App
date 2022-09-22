@@ -1,8 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { stringify } from "querystring";
 import "./campaigns-create.css";
+
+interface CampaignData {
+  title: string;
+  players: string[];
+  startDate: string;
+  description: string;
+  userObj: string;
+}
+
+interface UserObj {
+  password: string;
+  token: string;
+  username: string;
+  _id: string;
+}
+
+export interface Players {}
 
 function CampaignCreate() {
   const [title, setTitle] = useState("");
@@ -10,14 +27,20 @@ function CampaignCreate() {
   const [startDate, setStartDate] = useState("");
   const [description, setDescription] = useState("");
 
-  let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+  let userObj: UserObj & string = JSON.parse(
+    localStorage.getItem("user") || "{}"
+  );
+  console.log("LOOOOK HERE", userObj);
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (evt: any) => {
     evt.preventDefault();
+    navigate("/campaigns");
 
-    const campaignData = {
+    const campaignData: CampaignData = {
       title,
-      players,
+      players: [players],
       startDate,
       description,
       userObj,
@@ -25,10 +48,11 @@ function CampaignCreate() {
 
     try {
       if (userObj.token) {
-        const result = await axios.post(
-          "http://localhost:9444/campaigns/create",
-          campaignData
-        );
+        const result = await axios({
+          method: "POST",
+          url: "http://localhost:9444/campaigns/create",
+          data: campaignData,
+        });
         console.log(campaignData);
         const data = result.data;
         console.log("RESULT OF ADD STORY", data);
@@ -61,17 +85,17 @@ function CampaignCreate() {
           type="text"
           className="form-control"
           placeholder="Players"
-          onChange={(evt) => setPlayers(evt.target.value)}
+          onChange={(evt) => console.log(setPlayers(evt.target.value))}
           value={players}
         />
         <div className="date-row">
           <h5>Start Date</h5>
         </div>
         <input
-          type="text"
+          type="date"
           className="form-control"
           placeholder="Start date"
-          onChange={(evt) => setStartDate(evt.target.value)}
+          onChange={(evt) => console.log(setStartDate(evt.target.value))}
           value={startDate}
         />
         <div className="description-row">
@@ -86,9 +110,9 @@ function CampaignCreate() {
         />
 
         <button type="submit" className="btn btn-success m-3">
-          <Link className="nav-link" to="/campaigns">
+          {/* <Link className="nav-link" to="/campaigns">
             Create Campaign
-          </Link>
+          </Link> */}
         </button>
       </div>
     </form>

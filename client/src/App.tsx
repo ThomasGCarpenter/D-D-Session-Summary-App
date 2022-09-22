@@ -14,18 +14,24 @@ import EditSession from "./pages/campaigns-id-editSessions";
 import CampaignEdit from "./pages/campaigns-edit";
 import SessionPage from "./pages/session-page";
 import PrivateRoutes from "./privateRoute";
+import LandingPage from "./pages/landing-page";
+import CampaignJoin from "./pages/campaigns-join";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route element={<PrivateRoutes />}>
+          <Route path="/home" element={<Welcome />} />
+        </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
         <Route element={<PrivateRoutes />}>
-          <Route element={<Campaigns />} path="campaigns" />
+          <Route path="campaigns" element={<Campaigns />} />
         </Route>
+        <Route path="campaigns/join/:id" element={<CampaignJoin />} />
         <Route path="campaigns/:id/addsession" element={<AddSession />} />
         <Route path="campaigns/create" element={<NewCampaign />} />
         <Route path="campaigns/:id/sessions" element={<ViewSession />} />

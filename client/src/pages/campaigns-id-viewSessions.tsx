@@ -135,12 +135,17 @@ function Session(this: any) {
           </div>
         </div>
       </div>
+      {/* {sessionInfo.map((session) => {
+        return (
+          <div className="row-sessions">
+            <div className="col-12">
+              <h3 className="your-sessions">Sessions</h3>
+            </div>
+            <div></div>
+          </div>
+        );
+      })} */}
 
-      <div className="row-sessions">
-        <div className="col-12">
-          <h3 className="your-sessions">Sessions</h3>
-        </div>
-      </div>
       <table className="table w-auto table-sm table-hover ">
         <thead className="thead ">
           <tr>
@@ -162,6 +167,13 @@ function Session(this: any) {
           {sessionInfo.map((session) => {
             return (
               <tr className="row-info">
+                <tr>
+                  <h4>
+                    {session.session_id}
+                    Send players this invite link to have them join your
+                    campaign.
+                  </h4>
+                </tr>
                 <td>
                   <div>
                     <button
