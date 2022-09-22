@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./signup.css";
 import axios from "axios";
@@ -9,6 +9,7 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState<any | null>(null);
 
+  const navigate = useNavigate();
   //Check if a user has previously logged in
   let userObj = JSON.parse(localStorage.getItem("user") || "{}");
   console.log(userObj);
@@ -24,11 +25,15 @@ function SignIn() {
     setUser({});
     setUsername("");
     setPassword("");
-    localStorage.clear();
+    window.localStorage.clear();
+    navigate("/");
+    console.log(localStorage);
   };
 
   const handleFormSubmit = async (evt: any) => {
     evt.preventDefault();
+
+    navigate("/campaigns");
 
     const userData = {
       username,
@@ -42,8 +47,8 @@ function SignIn() {
       setUser(result.data);
       // store the user in localStorage
       localStorage.setItem("user", JSON.stringify(result.data));
-      console.log(localStorage);
-      console.log(result.data);
+      console.log("hhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiii", localStorage);
+      console.log("diiiiiiiiieeeeeeeeeeeeeeeeeeeeeeee", result.data);
     } catch (err) {
       console.log(err);
     }
@@ -56,7 +61,6 @@ function SignIn() {
             <h3>Log In!</h3>
           </div>
           <div className="module">
-            <label></label>
             <input
               type="text"
               className="form-control"
@@ -64,10 +68,8 @@ function SignIn() {
               onChange={(evt) => setUsername(evt.target.value)}
               value={username}
             />
-            {/* <small id="emailHelp" className="form-text text-muted">Username must be unique</small> */}
           </div>
           <div className="module">
-            <label></label>
             <input
               type="password"
               className="form-control"
@@ -76,12 +78,10 @@ function SignIn() {
               value={password}
             />
           </div>
-
-          <button type="submit" className="btn btn-success m-1">
-            <Link className="nav-link" to={`/`}>
-              Login!
-            </Link>
+          <button type="submit" className="btn btn-danger m-1">
+            Log In!
           </button>
+
           <button
             type="submit"
             className="btn btn-danger m-1"

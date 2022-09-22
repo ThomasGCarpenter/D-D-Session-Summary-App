@@ -1,8 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import "./header.css";
+import React, { useState } from "react";
 
 function Header() {
-  let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(localStorage.getItem("user") || "{}")
+  );
 
   return (
     <nav className="navbar navbar-expand-lg  d-flex">
@@ -31,23 +34,19 @@ function Header() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login">
-                <h4>
-                  {userObj ? <div>{userObj.username}</div> : <span>Login</span>}
-                </h4>
-              </Link>
+              <h4>
+                {currentUser ? (
+                  <div>
+                    {currentUser.username}
+                    <div>
+                      <Link className="nav-link" to="/login">
+                        Logout!
+                      </Link>
+                    </div>
+                  </div>
+                ) : null}
+              </h4>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/signup">
-                {userObj ? null : <span>Signin</span>}
-              </Link>
-            </li>
-            {/* <div className= "col d flex align-items-center">
-                <li className="navbar-brand h1">
-                {location.pathname === "/campaigns" ? 
-                <span>Evil Campaign</span> : null}
-                </li>
-                </div> */}
           </ul>
         </div>
       </div>
@@ -56,48 +55,3 @@ function Header() {
 }
 
 export default Header;
-
-// import Container from 'react-bootstrap/Container';
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-
-// function ColorSchemesExample() {
-//   const location = useLocation();
-//   return (
-//       <Navbar bg="dark" variant="dark">
-//         <Container>
-//           <Navbar.Brand>
-//               <Link className="navbar-brand" to="/">
-//                 The Lore of Yore
-//                 <Navbar.Text className="campaign-page">
-//                 {location.pathname === "/campaigns" ? <span> : Campaign Page</span> : null}
-//                   </Navbar.Text>
-//               </Link>
-//           </Navbar.Brand>
-
-//           {/* <Nav className="mx-auto">
-//             <Navbar.Text>
-//             {location.pathname === "/campaigns" ?
-//                 <span>Evil Campaign</span> : null}
-//               </Navbar.Text>
-//             </Nav> */}
-
-//           <Nav className="ms-auto mb-2 mb-lg-0">
-//             <Nav.Link>
-//               <Link className="nav-link" to="/campaigns">Campaigns</Link>
-//             </Nav.Link>
-//             <Nav.Link>
-//               <Link className="nav-link" to="/login">Log In</Link>
-//             </Nav.Link>
-//             <Nav.Link href="#pricing">
-//             <Link className="nav-link" to="/signup">Sign Up</Link>
-//               </Nav.Link>
-//           </Nav>
-
-//         </Container>
-//       </Navbar>
-
-//   );
-// }
-
-// export default ColorSchemesExample;

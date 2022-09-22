@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Image from "../images/epic.jpg";
@@ -9,8 +9,12 @@ function Welcome() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   const handleFormSubmit = async (evt: any) => {
     evt.preventDefault();
+
+    navigate("/campaigns/create");
 
     const userData = {
       username,
@@ -36,38 +40,6 @@ function Welcome() {
                 <img src={Image} className="magic" />
               </div>
             </div>
-
-            <form className="col-md">
-              <div className="module">
-                <h3 className="sign-up">Sign Up!</h3>
-              </div>
-              <div className="module">
-                <label></label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Username must be unique"
-                  onChange={(evt) => setUsername(evt.target.value)}
-                  value={username}
-                />
-                {/* <small id="emailHelp" className="form-text text-muted">Username must be unique</small> */}
-              </div>
-              <div className="module">
-                <label></label>
-                <input
-                  type="password"
-                  className="form-control"
-                  placeholder="Password"
-                  onChange={(evt) => setPassword(evt.target.value)}
-                  value={password}
-                />
-              </div>
-              <button type="submit" className="btn btn-success m-1">
-                <Link className="nav-link" to={`/`}>
-                  Sign Up!
-                </Link>
-              </button>
-            </form>
           </div>
         </div>
       </div>

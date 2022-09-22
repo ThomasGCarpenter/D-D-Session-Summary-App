@@ -1,11 +1,6 @@
 .welcome {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(
-    344deg,
-    rgba(148, 163, 228, 0.8379726890756303) 25%,
-    rgba(247, 251, 142, 0.6951155462184874) 100%
-  );
 }
 .welcome .row {
   padding-top: 20px;

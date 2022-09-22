@@ -66,9 +66,12 @@ function Campaigns() {
                 </div>
                 <p className="started">campaign started {campaign.startDate}</p>
 
+                <div className="url">
+                  http://localhost:3000/campaigns/join/{campaign._id}
+                </div>
+
                 <div className="players">Players: {campaign.players}</div>
 
-                <div className="role">Role:</div>
                 <div className="dm">DM:</div>
                 <div className="row">
                   <div className="buttons-bottom">
