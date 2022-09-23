@@ -7,8 +7,10 @@ import "./campaigns-create.css";
 interface CampaignData {
   title: string;
   players: string[];
+  // Dm: string;
   startDate: string;
   description: string;
+  // userPlayer: object;
   userObj: string;
 }
 
@@ -18,14 +20,12 @@ interface UserObj {
   username: string;
   _id: string;
 }
-
-export interface Players {}
-
 function CampaignCreate() {
   const [title, setTitle] = useState("");
   const [players, setPlayers] = useState("");
   const [startDate, setStartDate] = useState("");
   const [description, setDescription] = useState("");
+  // const [Dm, setDM] = useState("");
 
   let userObj: UserObj & string = JSON.parse(
     localStorage.getItem("user") || "{}"
@@ -40,9 +40,13 @@ function CampaignCreate() {
 
     const campaignData: CampaignData = {
       title,
-      players: [players],
+      players: [],
+      // Dm,
       startDate,
       description,
+      // userPlayer: {
+      //   user: "",
+      // },
       userObj,
     };
 
@@ -85,9 +89,19 @@ function CampaignCreate() {
           type="text"
           className="form-control"
           placeholder="Players"
-          onChange={(evt) => console.log(setPlayers(evt.target.value))}
+          onChange={(evt) => setPlayers(evt.target.value)}
           value={players}
         />
+        {/* <div className="players-row">
+          <h5>Who is the DM?</h5>
+        </div>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Players"
+          onChange={(evt) => setDM(evt.target.value)}
+          value={Dm}
+        /> */}
         <div className="date-row">
           <h5>Start Date</h5>
         </div>
@@ -95,7 +109,7 @@ function CampaignCreate() {
           type="date"
           className="form-control"
           placeholder="Start date"
-          onChange={(evt) => console.log(setStartDate(evt.target.value))}
+          onChange={(evt) => setStartDate(evt.target.value)}
           value={startDate}
         />
         <div className="description-row">
