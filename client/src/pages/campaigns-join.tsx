@@ -5,6 +5,8 @@ import "./campaigns.css";
 import { getPreEmitDiagnostics } from "typescript";
 import "@popperjs/core";
 
+import "./campaigns-join.css";
+
 function Campaigns() {
   const { id } = useParams();
   const [results, setResults] = useState<any[]>([]);
@@ -30,50 +32,45 @@ function Campaigns() {
 
   return (
     <div className="container">
-      <div className="row border-bottom border-primary border-2 my-4 pb-3">
-        <div className="col-9">
-          <h3 className="my-campaigns">My Campaigns</h3>
-        </div>
+      <div className="col-9">
+        <h3 className="my-campaigns">My Campaigns</h3>
+      </div>
 
-        {results
-          .filter((campaign) => campaign._id === id)
-          .map((campaign) => {
-            return (
+      {results
+        .filter((campaign) => campaign._id === id)
+        .map((campaign) => {
+          const player = campaign.players.split(",");
+          console.log(player);
+          return (
+            <>
               <div className="col-4 mx-auto">
                 <div className="card">
                   <div className="players"> {campaign.players}</div>
+                  <div className="goobers" key={player}>
+                    {player}
+                  </div>
                 </div>
               </div>
-            );
-          })}
-      </div>
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Dropdown
-        </button>
-        <ul className="dropdown-menu">
-          <li>
-            <button className="dropdown-item" type="button">
-              Action
-            </button>
-          </li>
-          <li>
-            <button className="dropdown-item" type="button">
-              Another action
-            </button>
-          </li>
-          <li>
-            <button className="dropdown-item" type="button">
-              Something else here
-            </button>
-          </li>
-        </ul>
-      </div>
+              <div className="dropdown">
+                <button
+                  className="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Dropdown
+                </button>
+                <ul className="dropdown-menu">
+                  <li>
+                    <button className="dropdown-item" type="button">
+                      <div key={player}>{player}</div>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </>
+          );
+        })}
     </div>
   );
 }

@@ -160,7 +160,7 @@ fastify.get("/campaigns/:sessionid/session/:id", async (request, reply) => {
 server.route({
   method: "POST",
   url: "/campaigns/upload",
-  preHandler: upload.single("image"),
+  preHandler: upload.single("file"),
   handler: async function (request, reply) {
     const fileUploadCollection = fastify.mongo.client
       .db("mydb")
@@ -208,9 +208,12 @@ fastify.post("/campaigns/create", async (request, reply) => {
   const campaignDataModel = {
     title: request.body.title,
     players: request.body.players,
+    DM: request.body.userObj.username,
     startDate: request.body.startDate,
     description: request.body.description,
-    user: request.body.userObj.username,
+    // userPlayer: {
+    //   user: "",
+    // },
   };
 
   try {

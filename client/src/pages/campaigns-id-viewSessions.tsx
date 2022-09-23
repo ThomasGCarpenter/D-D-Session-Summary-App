@@ -6,13 +6,13 @@ import "./campaigns-id-viewSessions.css";
 function Session(this: any) {
   const { id } = useParams();
   const [sessionInfo, setSessionData] = useState<any[]>([]);
-  const [campaignData, setCampaignData] = useState<any[]>([]);
+  const [campaignData, setCampaignData] = useState<File>();
 
-  // const [file, setFile] = useState<any[]>([])
+  const [file, setFile] = useState<any[]>([]);
 
-  // function handleChange(event: any) {
-  //   setFile(event.target.files[0])
-  // }
+  function handleChange(event: any) {
+    setFile(event.target.files[0]);
+  }
 
   useEffect(() => {
     getViewSessions();
@@ -44,25 +44,26 @@ function Session(this: any) {
         console.log(`We have a server error`, error);
       });
 
-  // const handleFormSubmit = async (evt: any) => {
-  //         evt.preventDefault()
+  const handleSubmit = async (evt: any) => {
+    evt.preventDefault();
 
-  //         // const formData = new FormData();
-  //         // formData.append('file', file);
+    const formData = new FormData();
+    formData.append("file", file as unknown as Blob);
 
-  //         console.log("LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL", formData)
-  //          axios
-  //             .post("http://localhost:9444/campaigns/upload", formData, {
-  //               headers: { "Content-Type": "multipart/form-data" }
-  //             })
-  //                       .then((res: any) => {
-  //                         console.log(res);
-  //                       })
-  //                       .catch((err: any) => {
-  //                         console.log(err);
-  //                       });
+    console.log(
+      "LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL",
+      formData
+    );
 
-  //                 }
+    axios
+      .post("http://localhost:9444/campaigns/upload", formData, {})
+      .then((res: any) => {
+        console.log(res);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="container ">
@@ -128,24 +129,62 @@ function Session(this: any) {
           </div>
           <div className="col-4">
             <button type="submit" className="button-lore">
-              <Link className="nav-link" to={`/campaigns/${id}/sessions`}>
-                Add to Lore
+              <Link className="nav-link" to={`/campaigns/${id}/addsession`}>
+                Add Session
               </Link>
             </button>
           </div>
         </div>
       </div>
-      {/* {sessionInfo.map((session) => {
-        return (
-          <div className="row-sessions">
-            <div className="col-12">
-              <h3 className="your-sessions">Sessions</h3>
-            </div>
-            <div></div>
-          </div>
-        );
-      })} */}
+      <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+        <input type="file" name="file" onChange={handleChange} />
+        <button type="submit">Upload</button>
+      </form>
+      <button
+        type="button"
+        className="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Launch demo modal
+      </button>
 
+      <div
+        className="modal fade"
+        id="exampleModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="exampleModalLabel">
+                Modal title
+              </h5>
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div className="modal-body">...</div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" className="btn btn-primary">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <table className="table w-auto table-sm table-hover ">
         <thead className="thead ">
           <tr>
@@ -167,13 +206,6 @@ function Session(this: any) {
           {sessionInfo.map((session) => {
             return (
               <tr className="row-info">
-                <tr>
-                  <h4>
-                    {session.session_id}
-                    Send players this invite link to have them join your
-                    campaign.
-                  </h4>
-                </tr>
                 <td>
                   <div>
                     <button
