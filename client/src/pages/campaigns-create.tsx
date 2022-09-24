@@ -6,11 +6,10 @@ import "./campaigns-create.css";
 
 interface CampaignData {
   title: string;
-  players: string[];
-  // Dm: string;
+  players: string;
   startDate: string;
   description: string;
-  // userPlayer: object;
+
   userObj: string;
 }
 
@@ -25,7 +24,6 @@ function CampaignCreate() {
   const [players, setPlayers] = useState("");
   const [startDate, setStartDate] = useState("");
   const [description, setDescription] = useState("");
-  // const [Dm, setDM] = useState("");
 
   let userObj: UserObj & string = JSON.parse(
     localStorage.getItem("user") || "{}"
@@ -40,13 +38,11 @@ function CampaignCreate() {
 
     const campaignData: CampaignData = {
       title,
-      players: [],
-      // Dm,
+      players,
+
       startDate,
       description,
-      // userPlayer: {
-      //   user: "",
-      // },
+
       userObj,
     };
 
@@ -92,16 +88,7 @@ function CampaignCreate() {
           onChange={(evt) => setPlayers(evt.target.value)}
           value={players}
         />
-        {/* <div className="players-row">
-          <h5>Who is the DM?</h5>
-        </div>
-        <input
-          type="text"
-          className="form-control"
-          placeholder="Players"
-          onChange={(evt) => setDM(evt.target.value)}
-          value={Dm}
-        /> */}
+
         <div className="date-row">
           <h5>Start Date</h5>
         </div>
