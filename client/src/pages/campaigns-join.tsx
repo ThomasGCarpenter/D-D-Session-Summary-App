@@ -11,6 +11,14 @@ function Campaigns() {
   const { id } = useParams();
   const [results, setResults] = useState<any[]>([]);
   const { title } = useParams();
+  const [join, setJoin] = useState("");
+  let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+  console.log(userObj);
+
+  const joinData = {
+    join,
+    userObj,
+  };
 
   useEffect(() => {
     getResults();
@@ -29,7 +37,20 @@ function Campaigns() {
       .catch((error) => {
         console.log(`We have a server error`, error);
       });
+  const handleFormSubmit = async (evt: any) => {
+    evt.preventDefault();
 
+    try {
+      const result = await axios.put(
+        `http://localhost:9444/campaigns/join/${id}`,
+        joinData
+      );
+      const data = result.data;
+      console.log("RESULT OF ADD Join", data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="container">
       <div className="col-9">
@@ -67,6 +88,20 @@ function Campaigns() {
                     </button>
                   </li>
                 </ul>
+                <div className="description-row">
+                  <h5>Which Player are you?</h5>
+                </div>
+                <input
+                  type="textarea"
+                  className="form-control"
+                  onChange={(evt) => setJoin(evt.target.value)}
+                  value={join}
+                />
+                <button
+                  type="submit"
+                  className="btn btn-success m-3"
+                  onClick={handleFormSubmit}
+                ></button>
               </div>
             </>
           );

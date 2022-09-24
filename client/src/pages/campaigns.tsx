@@ -8,6 +8,8 @@ function Campaigns() {
   const [results, setResults] = useState<any[]>([]);
   const { title } = useParams();
 
+  let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+
   useEffect(() => {
     getResults();
   }, []);
@@ -45,65 +47,69 @@ function Campaigns() {
       </div>
 
       <div className="row">
-        {results.map((campaign, index) => {
-          return (
-            <div className="col-4 mx-auto">
-              <div className="card">
-                <div>
-                  <button className="button-circle">
-                    <Link
-                      className="nav-link"
-                      to={`/campaigns/${campaign._id}/edit`}
-                    >
-                      Edit
-                    </Link>
-                  </button>
+        {results
+          // .filter((campaign) => campaign.userPlayer === userObj.username)
+          .map((campaign, index) => {
+            return (
+              <div className="col-4 mx-auto">
+                <div className="card">
+                  <div>
+                    <button className="button-circle">
+                      <Link
+                        className="nav-link"
+                        to={`/campaigns/${campaign._id}/edit`}
+                      >
+                        Edit
+                      </Link>
+                    </button>
+                    <div className="row">
+                      <div className="col-6">
+                        <p className="campaign-title">{campaign.title}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <p className="started">
+                    campaign started {campaign.startDate}
+                  </p>
+
+                  <div className="url">
+                    http://localhost:3000/campaigns/join/{campaign._id}
+                  </div>
+
+                  <div className="players">Players: {campaign.players}</div>
+
+                  <div className="dm">DM:</div>
                   <div className="row">
-                    <div className="col-6">
-                      <p className="campaign-title">{campaign.title}</p>
+                    <div className="buttons-bottom">
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary btn-sm"
+                      >
+                        <Link
+                          className="nav-link"
+                          to={`/campaigns/${campaign._id}/sessions`}
+                        >
+                          View Sessions
+                        </Link>
+                      </button>
+
+                      <button
+                        type="button"
+                        className="btn btn-outline-danger btn-sm"
+                      >
+                        <Link
+                          className="nav-link"
+                          to={`/campaigns/${campaign._id}/addsession`}
+                        >
+                          Add Session
+                        </Link>
+                      </button>
                     </div>
                   </div>
                 </div>
-                <p className="started">campaign started {campaign.startDate}</p>
-
-                <div className="url">
-                  http://localhost:3000/campaigns/join/{campaign._id}
-                </div>
-
-                <div className="players">Players: {campaign.players}</div>
-
-                <div className="dm">DM:</div>
-                <div className="row">
-                  <div className="buttons-bottom">
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-sm"
-                    >
-                      <Link
-                        className="nav-link"
-                        to={`/campaigns/${campaign._id}/sessions`}
-                      >
-                        View Sessions
-                      </Link>
-                    </button>
-
-                    <button
-                      type="button"
-                      className="btn btn-outline-danger btn-sm"
-                    >
-                      <Link
-                        className="nav-link"
-                        to={`/campaigns/${campaign._id}/addsession`}
-                      >
-                        Add Session
-                      </Link>
-                    </button>
-                  </div>
-                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
         <div></div>
       </div>
     </div>
