@@ -1,53 +1,69 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import "./header.css";
 import React, { useState } from "react";
 
 function Header() {
+  const { id } = useParams();
+  console.log(id);
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user") || "{}")
   );
 
+  const location = useLocation();
+
+  const renderHeader = () => {
+    if (location.pathname === `/campaigns/${id}/sessions`)
+      return <h3>The Lore of Yore - Lore</h3>;
+    else if (location.pathname === "/campaigns/:id/addsession")
+      return <h3>The Lore of Yore - Add to Your Lore</h3>;
+    else if (location.pathname === "/campaigns")
+      return <h3>The Lore of Yore - Campaigns</h3>;
+    else return <h3>The Lore of Yore</h3>;
+  };
+
   return (
-    <nav className="navbar navbar-expand-lg  d-flex">
-      <div className="icon"></div>
-      <div className="container">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light border-bottom border-dark">
+      <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <h3>The Lore of Yore</h3>
+          {renderHeader()}
         </Link>
         <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="navbar-text"></li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/campaigns">
-                <h4>Campaigns</h4>
+
+        <span className="justify-content-center">
+          {location.pathname === "/campaigns" ? (
+            <button className="button-create mx-auto">
+              <Link className="nav-link" to="/campaigns/create">
+                Add Campaign!
               </Link>
-            </li>
-            <li className="nav-item">
-              <h4>
-                {currentUser ? (
-                  <div>
-                    {currentUser.username}
-                    <div>
-                      <Link className="nav-link" to="/login">
-                        Logout!
-                      </Link>
-                    </div>
-                  </div>
-                ) : null}
-              </h4>
-            </li>
-          </ul>
+            </button>
+          ) : null}
+        </span>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav justify-content-end">
+            <span className="nav-item">
+              {currentUser ? (
+                <div className="justify-content-space-between">
+                  {`${currentUser.username}'s `}
+                  <Link className="nav-link" to="/campaigns">
+                    Campaigns
+                  </Link>
+                </div>
+              ) : null}
+            </span>
+            <Link className="nav-link" to="/logout">
+              Logout!
+            </Link>
+          </div>
         </div>
       </div>
     </nav>

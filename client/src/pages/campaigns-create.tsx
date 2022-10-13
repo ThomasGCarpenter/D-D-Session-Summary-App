@@ -9,7 +9,7 @@ interface CampaignData {
   players: string;
   startDate: string;
   description: string;
-
+  userId: string;
   userObj: string;
 }
 
@@ -24,6 +24,7 @@ function CampaignCreate() {
   const [players, setPlayers] = useState("");
   const [startDate, setStartDate] = useState("");
   const [description, setDescription] = useState("");
+  const [userId, setUserId] = useState("");
 
   let userObj: UserObj & string = JSON.parse(
     localStorage.getItem("user") || "{}"
@@ -39,10 +40,9 @@ function CampaignCreate() {
     const campaignData: CampaignData = {
       title,
       players,
-
       startDate,
       description,
-
+      userId,
       userObj,
     };
 

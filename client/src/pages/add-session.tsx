@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { stringify } from "querystring";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+
+import MyVerticallyCenteredModal from "./addCharacter-modal";
 import "./add-session.css";
 
 function CreateSession() {
@@ -12,6 +16,7 @@ function CreateSession() {
   const [knowledge, setKnowledge] = useState("");
   const [moments, setMoments] = useState("");
   const [storylines, setStorylines] = useState("");
+  const [modalShow, setModalShow] = React.useState(false);
 
   const handleFormSubmit = async (evt: any) => {
     evt.preventDefault();
@@ -53,9 +58,31 @@ function CreateSession() {
         </div>
       </div>
 
-      <form className="Story" onSubmit={handleFormSubmit}>
+      <form className="Add-Session" onSubmit={handleFormSubmit}>
         <div className="row">
-          <div className="col-7 border border-2 border-dark">
+          <h5 className="title">
+            Title of Chapter
+            <input
+              type="text"
+              className="form-control-title"
+              placeholder="Title"
+              onChange={(evt) => setTitle(evt.target.value)}
+              value={title}
+            />
+          </h5>
+          <div>
+            <h5>
+              Date
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Date"
+                onChange={(evt) => setDate(evt.target.value)}
+                value={date}
+              />
+            </h5>
+          </div>
+          <div className="col-6 border border-2 border-dark">
             <div>
               <h5 className="to-do">To Do List</h5>
               <div className="long-term">
@@ -82,34 +109,17 @@ function CreateSession() {
               </div>
             </div>
           </div>
-          <div className="col-5 border border-2 border-dark">
-            <h5 className="title">
-              Title of Chapter
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Answer"
-                onChange={(evt) => setTitle(evt.target.value)}
-                value={title}
-              />
-            </h5>
+          <div className="col-6 border border-2 border-dark">
             <div>
-              <h5>
-                Date
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Date"
-                  onChange={(evt) => setDate(evt.target.value)}
-                  value={date}
-                />
-              </h5>
-            </div>
+              <Button variant="primary" onClick={() => setModalShow(true)}>
+                Meet any interesting characters?
+              </Button>
 
-            <div>
-              <h5>Meet any interesting characters?</h5>
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
             </div>
-            <button>Add Character!</button>
           </div>
         </div>
 

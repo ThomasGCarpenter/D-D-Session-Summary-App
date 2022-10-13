@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Welcome from "./pages/welcome";
 import "bootstrap/dist/css/bootstrap.css";
 import Header from "./components/header";
 import { Routes, Route } from "react-router-dom";
@@ -16,6 +15,7 @@ import SessionPage from "./pages/session-page";
 import PrivateRoutes from "./privateRoute";
 import LandingPage from "./pages/landing-page";
 import CampaignJoin from "./pages/campaigns-join";
+import Logout from "./pages/log-out";
 
 function App() {
   return (
@@ -23,11 +23,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route element={<PrivateRoutes />}>
-          <Route path="/home" element={<Welcome />} />
-        </Route>
         <Route path="signup" element={<SignUp />} />
         <Route path="login" element={<LogIn />} />
+        <Route path="logout" element={<Logout />} />
         <Route element={<PrivateRoutes />}>
           <Route path="campaigns" element={<Campaigns />} />
         </Route>

@@ -1,28 +1,6 @@
-.container .col-5 {
-  height: 40vh;
-  width: 60vh;
-  background-color: purple;
-}
-
-.button-add {
-  background-color: #03040b;
-  border-style: double;
-  border-width: 1.5px;
-  border-color: blue;
-  color: white;
-  padding: 3px;
-  height: 9vh;
-}
-
-.container .col-8 {
-  border-color: black;
-}
-
-.container .to-do {
-  text-align: center;
-}
-
-.container .my-campaigns {
-  font-size: 2.5em;
-  color: rgb(99, 43, 43);
+.form-control-title {
+  width: 70%;
+  border: none;
+  border-bottom: 2px solid blue;
+  background-color: white;
 }
