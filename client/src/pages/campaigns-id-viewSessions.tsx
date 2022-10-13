@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+
+import MyVerticallyCenteredModalCampaigns from "./campaigns-tasks-modal";
 import "./campaigns-id-viewSessions.css";
 
 function Session(this: any) {
@@ -9,6 +13,7 @@ function Session(this: any) {
   const [campaignData, setCampaignData] = useState<File>();
 
   const [file, setFile] = useState<any[]>([]);
+  const [modalShow, setModalShow] = React.useState(false);
 
   function handleChange(event: any) {
     setFile(event.target.files[0]);
@@ -66,67 +71,9 @@ function Session(this: any) {
   };
 
   return (
-    <div className="container ">
+    <div className="container">
       <div className="headers">
         <div className="row border-bottom border-primary border-2 my-4 pb-3">
-          <div className="col-4">
-            <h5 className="to-do">
-              To Dos
-              <div className="modal" tabIndex={-1} role="dialog">
-                Long Term
-              </div>
-            </h5>
-          </div>
-          <div className="col-4">
-            <button
-              type="button"
-              className="btn btn-primary"
-              data-toggle="modal"
-              data-target="#exampleModalLong"
-            >
-              Launch demo modal
-            </button>
-
-            <div
-              className="modal fade"
-              id="exampleModalLong"
-              tabIndex={-1}
-              role="dialog"
-              aria-labelledby="exampleModalLongTitle"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLongTitle">
-                      Modal title
-                    </h5>
-                    <button
-                      type="button"
-                      className="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div className="modal-body"></div>
-                  <div className="modal-footer">
-                    <button
-                      type="button"
-                      className="btn btn-secondary"
-                      data-dismiss="modal"
-                    >
-                      Close
-                    </button>
-                    <button type="button" className="btn btn-primary">
-                      Save changes
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="col-4">
             <button type="submit" className="button-lore">
               <Link className="nav-link" to={`/campaigns/${id}/addsession`}>
@@ -136,113 +83,92 @@ function Session(this: any) {
           </div>
         </div>
       </div>
-      <form onSubmit={handleSubmit} method="post" encType="multipart/form-data">
-        <input type="file" name="file" onChange={handleChange} />
-        <button type="submit">Upload</button>
-      </form>
-      <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        Launch demo modal
-      </button>
-
-      <div
-        className="modal fade"
-        id="exampleModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Modal title
-              </h5>
-              <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">...</div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" className="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
+      <div>
+        <div>
+          Tasks
+          <div>Long Term:</div>
+          <div>Short Term:</div>
         </div>
       </div>
-      <table className="table w-auto table-sm table-hover ">
-        <thead className="thead ">
-          <tr>
-            <th className="primary" scope="col">
-              Edit
-            </th>
-            <th className="primary" scope="col">
-              Title
-            </th>
-            <th className="primary" scope="col">
-              Date
-            </th>
-            <th className="primary" scope="col">
-              View Session
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {sessionInfo.map((session) => {
-            return (
-              <tr className="row-info">
-                <td>
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-sm"
-                    >
-                      <Link
-                        className="nav-link"
-                        to={`/campaigns/${session.session_id}/edit/${session._id}`}
+      <div>
+        <div className="row-above-table">
+          <Button variant="primary" onClick={() => setModalShow(true)}>
+            Add Campaign Task
+          </Button>
+
+          <MyVerticallyCenteredModalCampaigns
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
+
+          <form
+            onSubmit={handleSubmit}
+            method="post"
+            encType="multipart/form-data"
+          >
+            <input type="file" name="file" onChange={handleChange} />
+            <button type="submit">Upload</button>
+          </form>
+        </div>
+        <table className="table w-auto table-sm table-hover ">
+          <thead className="thead ">
+            <tr>
+              <th className="primary" scope="col">
+                Edit
+              </th>
+              <th className="primary" scope="col">
+                Title
+              </th>
+              <th className="primary" scope="col">
+                Date
+              </th>
+              <th className="primary" scope="col">
+                View Session
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {sessionInfo.map((session) => {
+              return (
+                <tr className="row-info">
+                  <td>
+                    <div>
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary btn-sm"
                       >
-                        Edit Session
-                      </Link>
-                    </button>
-                  </div>
-                </td>
-                <td>{session.title}</td>
-                <td>{session.date}</td>
-                <td>
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-outline-primary btn-sm"
-                    >
-                      <Link
-                        className="nav-link"
-                        to={`/campaigns/${session.session_id}/session/${session._id}`}
+                        <Link
+                          className="nav-link"
+                          to={`/campaigns/${session.session_id}/edit/${session._id}`}
+                        >
+                          Edit Session
+                        </Link>
+                      </button>
+                    </div>
+                  </td>
+                  <td>{session.title}</td>
+                  <td>{session.date}</td>
+                  <td>
+                    <div>
+                      <button
+                        type="button"
+                        className="btn btn-outline-primary btn-sm"
                       >
-                        View Session
-                      </Link>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+                        <Link
+                          className="nav-link"
+                          to={`/campaigns/${session.session_id}/session/${session._id}`}
+                        >
+                          View Session
+                        </Link>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

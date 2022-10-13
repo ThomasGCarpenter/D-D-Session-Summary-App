@@ -211,6 +211,7 @@ fastify.post("/campaigns/create", async (request, reply) => {
     dm: request.body.userObj.username,
     startDate: request.body.startDate,
     description: request.body.description,
+    userId: request.body.userObj._id,
   };
 
   try {
@@ -245,7 +246,6 @@ fastify.post(
       username: request.body.username,
       password: hashed,
       token: token,
-      campaigns: [],
     };
     try {
       userData.insertOne(userDataModel);
@@ -308,17 +308,20 @@ fastify.put("/campaigns/join/:id", async (request, reply) => {
   const userUpdate = fastify.mongo.client.db("mydb").collection("userData");
   console.log("QQQQQQQQQQQQQQQQQQQQQQQQQQQQ", request.body.userObj.username);
   try {
-    userUpdate.insertOne(
+    await campaignEdit.findOneAndUpdate(
+      { _id: ObjectId(request.params.id) },
       {
-        _id: ObjectId(request.body.userObj.id),
-      },
-      {
-        $push: {
-          campaigns: request.params.id,
+        $set: {
+          userId: request.body.userObj._id,
         },
-      }
+      },
+      { returnOriginal: false }
     );
-  } finally {
+
+    return { code: 200, message: "Adding campaignDataModel succeeded" };
+  } catch (err) {
+    console.log(err);
+    return { code: 500, message: "Adding campaignDataModel failed" };
   }
 });
 

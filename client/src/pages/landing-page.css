@@ -1,31 +1,58 @@
-.welcome {
+/* .container1 {
+  height: 100vh;
 }
 
-/* .container {
-  background-image: url("../images/epic1.jpg");
-  background-color: #000000;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-  z-index: -1;
-  opacity: 0.85;
-} */
-
-.welcome .goober {
-  border: 0.05em solid black;
+.row {
+  height: 100vh;
 }
 
-.welcome .row {
+.col-6 {
+  padding-top: 70px;
+}
+
+.logIn {
+  text-align: center;
+  color: black;
+  font-size: 30px;
+}
+
+.logInButton {
   padding-top: 20px;
+  text-align: center;
 }
 
-.welcome .module {
-  padding-top: 30px;
-  padding-left: 30px;
+.logInForm {
+  padding-top: 7px;
+  padding-bottom: 10px;
 }
 
-.welcome .button {
-  padding-top: 30px;
-  padding-left: 30px;
+.form-control {
+  background-color: rgb(215, 215, 229);
+  box-sizing: border-box;
 }
+
+.forgot {
+  font-size: small;
+  margin-bottom: 1%;
+}
+
+.forgot:hover {
+  color: forestgreen;
+  cursor: pointer;
+}
+
+.signUp {
+  font-size: small;
+}
+
+.bottom {
+  padding-top: 10px;
+}
+
+.nav-link:hover {
+  color: blue;
+}
+.nav-link {
+  margin: 0;
+  padding: 0;
+} */

@@ -10,9 +10,6 @@ textarea {
   box-sizing: border-box;
 }
 
-body {
-  background-color: rgba(229, 229, 225, 0.479);
-}
 .Create .container-flex {
   display: flex;
   justify-content: flex-start;

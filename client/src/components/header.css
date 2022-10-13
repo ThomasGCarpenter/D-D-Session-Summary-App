@@ -2,29 +2,28 @@
   font: italic 1.2em "Fira Sans", serif;
   font-weight: bold;
   font-size: 1.5em;
-  color: #fcfbf4;
+  color: black;
 }
 
-.navbar .icon {
-  content: url("../images/DND-ICON.png");
-  max-height: 7vh;
-  margin-left: 12px;
+.navbar-nav {
+  width: 100%;
+}
+
+.nav-item {
+  width: 200px;
 }
 
 .navbar {
+  border-bottom: black;
+  border-width: 3px;
+}
+
+.button-create {
   background-color: #03040b;
-}
+  border-style: double;
+  border-width: 1.5px;
+  border-color: blue;
+  color: white;
 
-.nav-item :nth-child(1) {
-  color: #fcfbf4;
-  font: italic 1.2em "Fira Sans", serif;
-  font-weight: bold;
-  font-size: 1em;
-}
-
-.nav-item :nth-child(2) {
-  color: #fcfbf4;
-  font: 1.2em serif;
-  font-weight: bold;
-  font-size: 1em;
+  height: 9vh;
 }

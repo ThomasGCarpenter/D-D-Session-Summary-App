@@ -1,6 +1,10 @@
 .container {
   max-width: 100%;
 }
+
+.row {
+  padding-top: 12px;
+}
 .container .button-create {
   background-color: #03040b;
   border-style: double;
@@ -27,9 +31,22 @@
 }
 
 .container .card {
-  border-color: rgb(162, 162, 243);
-  border-style: double;
-  border-width: 6px;
+  border-color: black;
+  /* border-style: double; */
+  border-width: 2.5px;
+  background: #f4f5fc;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.card:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 10px 10px 8px #888888;
+  top: -4px;
+  border-color: black;
+  /* border-style: double; */
+  border-width: 2.5px;
   background: #f4f5fc;
 }
 
@@ -39,22 +56,6 @@
   font-size: 0.8em;
   margin: 4px;
   padding: 3px;
-}
-
-.container .col-4 .button-circle {
-  width: 30px;
-  height: 30px;
-  margin-top: 3px;
-  margin-left: 6px;
-  border-radius: 15px;
-  text-align: center;
-  font-size: 9.5px;
-  line-height: 1.42857;
-  color: white;
-  background-color: rgb(53, 97, 242);
-  border-color: rgb(190, 190, 190);
-  border-width: 2px;
-  padding: 5px;
 }
 
 .container .col-4 .campaign-title {
@@ -77,6 +78,7 @@
 
 .container .col-4 .url {
   padding: 10px;
+  padding-top: 0px;
   margin: 3px;
   font-weight: lighter;
   font: 0.8em "Fira Sans", serif;
@@ -97,15 +99,72 @@
 }
 
 .container .col-4 .dm {
-  padding: 10px;
-  margin: 3px;
   padding-bottom: 15px;
+  margin: 3px;
+  padding: 10px;
+
   font-weight: bold;
   font: 1.2em "Fira Sans", serif;
-  border-bottom: thick double #32a1ce;
+  border-bottom: thick double blue;
 }
 
-.container .col-4 .buttons-bottom {
-  padding: 10px;
-  margin: 40px;
+.add-player {
+  text-align: center;
+  font-weight: lighter;
+  font: 0.8em "Fira Sans", serif;
+}
+
+.button-edit {
+  width: 120px;
+  padding: 5px;
+  margin-right: 5px;
+  font-weight: lighter;
+  font: 1em "Fira Sans", serif;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+}
+
+.button-edit:hover {
+  transform: scale(1.015);
+  transition: 0.15s linear;
+  box-shadow: 1px 1px 22px rgba(157, 184, 209, 0.5);
+}
+
+.button-view {
+  width: 120px;
+  padding: 5px;
+  font-weight: lighter;
+  font: 1em "Fira Sans", serif;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+}
+
+.button-add-session {
+  width: 120px;
+  padding: 5px;
+  margin-left: 5px;
+  font-weight: lighter;
+  font: 1em "Fira Sans", serif;
+  background-color: black;
+  color: white;
+  border-radius: 30px;
+}
+
+.buttons-bottom {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.button-add-session:hover {
+  transform: scale(1.015);
+  transition: 0.15s linear;
+  box-shadow: 1px 1px 22px rgba(157, 184, 209, 0.5);
+}
+
+.button-view:hover {
+  transform: scale(1.015);
+  transition: 0.15s linear;
+  box-shadow: 1px 1px 22px rgba(157, 184, 209, 0.5);
 }

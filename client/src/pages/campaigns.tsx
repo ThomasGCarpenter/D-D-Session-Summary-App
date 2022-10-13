@@ -9,6 +9,7 @@ function Campaigns() {
   const { title } = useParams();
 
   let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+  console.log(userObj._id);
 
   useEffect(() => {
     getResults();
@@ -28,63 +29,43 @@ function Campaigns() {
 
   return (
     <div className="container">
-      <div className="row border-bottom border-primary border-2 my-4 pb-3">
-        <div className="col-9">
-          <h3 className="my-campaigns">My Campaigns</h3>
-        </div>
-        <div className="col-3">
-          <button className="button-create">
-            <Link className="nav-link" to="/campaigns/create">
-              Create Campaign!
-            </Link>
-          </button>
-        </div>
-      </div>
       <div className="row">
-        <div className="col align-self-start mt-2">
-          <h4 className="active-campaigns">Active/Inactive Campaigns</h4>
-        </div>
-      </div>
-
-      <div className="row">
-        {results
-          // .filter((campaign) => campaign.userPlayer === userObj.username)
-          .map((campaign, index) => {
+        {results.map((campaign, index) => {
+          if (campaign.userId === userObj._id) {
             return (
               <div className="col-4 mx-auto">
                 <div className="card">
                   <div>
-                    <button className="button-circle">
-                      <Link
-                        className="nav-link"
-                        to={`/campaigns/${campaign._id}/edit`}
-                      >
-                        Edit
-                      </Link>
-                    </button>
                     <div className="row">
-                      <div className="col-6">
+                      <div className="">
                         <p className="campaign-title">{campaign.title}</p>
                       </div>
                     </div>
                   </div>
                   <p className="started">
-                    campaign started {campaign.startDate}
+                    Campaign Started: {campaign.startDate}
                   </p>
-
-                  <div className="url">
-                    http://localhost:3000/campaigns/join/{campaign._id}
-                  </div>
 
                   <div className="players">Players: {campaign.players}</div>
 
-                  <div className="dm">DM:</div>
+                  <div className="dm">DM: {campaign.DM}</div>
                   <div className="row">
                     <div className="buttons-bottom">
-                      <button
-                        type="button"
-                        className="btn btn-outline-primary btn-sm"
-                      >
+                      <span className="add-player">
+                        To Add Player, Send Invite Link
+                      </span>
+                      <div className="url">
+                        http://localhost:3000/campaigns/join/{campaign._id}
+                      </div>
+                      <button className="button-edit" type="button">
+                        <Link
+                          className="nav-link"
+                          to={`/campaigns/${campaign._id}/edit`}
+                        >
+                          Edit
+                        </Link>
+                      </button>
+                      <button type="button" className="button-view">
                         <Link
                           className="nav-link"
                           to={`/campaigns/${campaign._id}/sessions`}
@@ -93,10 +74,7 @@ function Campaigns() {
                         </Link>
                       </button>
 
-                      <button
-                        type="button"
-                        className="btn btn-outline-danger btn-sm"
-                      >
+                      <button type="button" className="button-add-session">
                         <Link
                           className="nav-link"
                           to={`/campaigns/${campaign._id}/addsession`}
@@ -109,7 +87,8 @@ function Campaigns() {
                 </div>
               </div>
             );
-          })}
+          }
+        })}
         <div></div>
       </div>
     </div>
