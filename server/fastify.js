@@ -248,13 +248,15 @@ fastify.post(
       token: token,
     };
     try {
-      userData.insertOne(userDataModel);
-      console.log;
-      return console.log(userData);
+      const result = await userData.insertOne(userDataModel);
+      console.log(userData);
+
+      reply.send({ token });
     } catch (err) {
       console.log(err);
+
+      reply.send({ message: 'Error signing up' })
     }
-    reply.send({ token });
   }
 );
 
@@ -268,14 +270,14 @@ fastify.post("/login", async (request, reply) => {
       userFind.password
     );
     if (!isValidPassword) {
-      console.log("password not match");
+      console.log("Invalid Credentails");
     } else if (isValidPassword) {
-      console.log("SUCCCCCCCCESSSSSSSSSSSSSSs");
+      console.log("Sign In Successful");
       return userFind;
     }
   } catch (err) {
     console.log(err);
-    return { code: 500, message: "Login failed" };
+    return { code: 500, message: "Login Failed" };
   }
 });
 
