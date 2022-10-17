@@ -249,7 +249,7 @@ fastify.post(
     };
     try {
       const result = await userData.insertOne(userDataModel);
-      console.log(userData);
+      console.log(result);
 
       reply.send({ token });
     } catch (err) {
