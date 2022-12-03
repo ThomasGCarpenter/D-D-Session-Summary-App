@@ -42,13 +42,10 @@ function LandingPage() {
 
     try {
       const result = await axios.post("http://localhost:9444/login", userData);
-      console.log("TTTTTTTTTTTTTTt", result);
-      console.log("HHHHHHHHHHHHHH", result.data);
+
       setUser(result.data);
       // store the user in localStorage
       localStorage.setItem("user", JSON.stringify(result.data));
-      console.log("hhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiii", localStorage);
-      console.log("diiiiiiiiieeeeeeeeeeeeeeeeeeeeeeee", result.data);
     } catch (err) {
       console.log(err);
     }
@@ -87,13 +84,13 @@ function LandingPage() {
                 Log In
               </button>
               <div className="bottom">
-                <p className="forgot">Forgot Password?</p>
-                <p className="signUp">
-                  Don't have an Account?
-                  <Link className="nav-link" to={"/signup"}>
-                    Sign Up Here!
-                  </Link>
-                </p>
+                <div className="signUp">
+                  <button className="btn btn-primary m-1">
+                    <Link className="nav-link" to={"/signup"}>
+                      Sign Up Here!
+                    </Link>
+                  </button>
+                </div>
               </div>
             </div>
           </form>
