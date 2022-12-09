@@ -249,12 +249,11 @@ fastify.post(
     };
     try {
       userData.insertOne(userDataModel);
-      console.log;
-      return console.log(userData);
+      return userDataModel;
     } catch (err) {
       console.log(err);
     }
-    reply.send({ token });
+    // reply.send({ token });
   }
 );
 

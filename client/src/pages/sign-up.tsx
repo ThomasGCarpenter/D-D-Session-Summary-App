@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import "./signup.css";
 import axios from "axios";
@@ -7,6 +7,19 @@ import axios from "axios";
 function SignUp() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState<any | null>(null);
+
+  const navigate = useNavigate();
+  //Check if a user has previously logged in
+  let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+  // console.log(userObj);
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
+    }
+  }, []);
 
   const handleFormSubmit = async (evt: any) => {
     evt.preventDefault();
@@ -18,12 +31,18 @@ function SignUp() {
 
     try {
       const result = await axios.post("http://localhost:9444/signup", userData);
-      const data = result.data;
-      console.log("RESULT OF ADD STORY", data);
+      console.log("result", result);
+      console.log("result.data", result.data);
+      setUser(result.data);
+      localStorage.setItem("user", JSON.stringify(result.data));
+      console.log("local storage", localStorage);
+      console.log("result.data", result.data);
+      navigate("/welcome");
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className="SignUp">
       <div className="container">
@@ -54,9 +73,7 @@ function SignUp() {
           </div>
 
           <button type="submit" className="btn btn-success m-1">
-            <Link className="nav-link" to={`/`}>
-              Sign Up!
-            </Link>
+            <button className="nav-link">Sign Up!</button>
           </button>
         </form>
       </div>

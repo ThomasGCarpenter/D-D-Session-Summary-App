@@ -4,7 +4,6 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-import MyVerticallyCenteredModalCampaigns from "./campaigns-tasks-modal";
 import "./campaigns-id-viewSessions.css";
 
 function Session(this: any) {
@@ -49,27 +48,6 @@ function Session(this: any) {
         console.log(`We have a server error`, error);
       });
 
-  const handleSubmit = async (evt: any) => {
-    evt.preventDefault();
-
-    const formData = new FormData();
-    formData.append("file", file as unknown as Blob);
-
-    console.log(
-      "LOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOL",
-      formData
-    );
-
-    axios
-      .post("http://localhost:9444/campaigns/upload", formData, {})
-      .then((res: any) => {
-        console.log(res);
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
-  };
-
   return (
     <div className="container">
       <div className="headers">
@@ -83,33 +61,8 @@ function Session(this: any) {
           </div>
         </div>
       </div>
-      <div>
-        <div>
-          Tasks
-          <div>Long Term:</div>
-          <div>Short Term:</div>
-        </div>
-      </div>
-      <div>
-        <div className="row-above-table">
-          <Button variant="primary" onClick={() => setModalShow(true)}>
-            Add Campaign Task
-          </Button>
 
-          <MyVerticallyCenteredModalCampaigns
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-          />
-
-          <form
-            onSubmit={handleSubmit}
-            method="post"
-            encType="multipart/form-data"
-          >
-            <input type="file" name="file" onChange={handleChange} />
-            <button type="submit">Upload</button>
-          </form>
-        </div>
+      <div>
         <table className="table w-auto table-sm table-hover ">
           <thead className="thead ">
             <tr>
