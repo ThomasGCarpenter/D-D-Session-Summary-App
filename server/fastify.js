@@ -248,10 +248,8 @@ fastify.post(
       token: token,
     };
     try {
-      const result = await userData.insertOne(userDataModel);
-      console.log(result);
-
-      reply.send({ token });
+      userData.insertOne(userDataModel);
+      return userDataModel;
     } catch (err) {
       console.log(err);
 

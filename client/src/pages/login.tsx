@@ -42,13 +42,10 @@ function SignIn() {
 
     try {
       const result = await axios.post("http://localhost:9444/login", userData);
-      console.log("TTTTTTTTTTTTTTt", result);
-      console.log("HHHHHHHHHHHHHH", result.data);
+      console.log(result.data);
       setUser(result.data);
       // store the user in localStorage
       localStorage.setItem("user", JSON.stringify(result.data));
-      console.log("hhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiii", localStorage);
-      console.log("diiiiiiiiieeeeeeeeeeeeeeeeeeeeeeee", result.data);
     } catch (err) {
       console.log(err);
     }

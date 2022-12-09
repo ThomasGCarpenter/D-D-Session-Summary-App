@@ -27,11 +27,17 @@ function Campaigns() {
         console.log(`We have a server error`, error);
       });
 
+  const filteredResults = results.filter((campaign) => {
+    return campaign.userId === userObj._id
+  })
+
   return (
     <div className="container">
       <div className="row">
-        {results.map((campaign, index) => {
-          if (campaign.userId === userObj._id) {
+        {filteredResults.length === 0 ? (
+          <h1 className="no-campaigns-text">No Campaigns...yet! Add one!</h1>
+        ) : (
+          filteredResults.map((campaign, index) => {
             return (
               <div className="col-4 mx-auto">
                 <div className="card">
@@ -87,8 +93,8 @@ function Campaigns() {
                 </div>
               </div>
             );
-          }
-        })}
+          })
+        )}
         <div></div>
       </div>
     </div>
