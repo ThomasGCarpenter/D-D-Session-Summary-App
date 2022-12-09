@@ -16,6 +16,7 @@ import PrivateRoutes from "./privateRoute";
 import LandingPage from "./pages/landing-page";
 import CampaignJoin from "./pages/campaigns-join";
 import Logout from "./pages/log-out";
+import UserWelcome from "./pages/welcome-user";
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route element={<PrivateRoutes />}>
           <Route path="campaigns" element={<Campaigns />} />
         </Route>
+        <Route path="welcome" element={<UserWelcome />} />
+
         <Route path="campaigns/join/:id" element={<CampaignJoin />} />
         <Route path="campaigns/:id/addsession" element={<AddSession />} />
         <Route path="campaigns/create" element={<NewCampaign />} />

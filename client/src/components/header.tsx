@@ -4,11 +4,11 @@ import React, { useState } from "react";
 
 function Header() {
   const { id } = useParams();
-  console.log(id);
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(localStorage.getItem("user") || "{}")
   );
-
+  let userObj = JSON.parse(localStorage.getItem("user") || "{}");
+  console.log(userObj._id);
   const location = useLocation();
 
   const renderHeader = () => {
@@ -51,9 +51,9 @@ function Header() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav justify-content-end">
             <span className="nav-item">
-              {currentUser ? (
+              {currentUser === currentUser.username ? (
                 <div className="justify-content-space-between">
-                  {`${currentUser.username}'s `}
+                  {`${currentUser.username} `}
                   <Link className="nav-link" to="/campaigns">
                     Campaigns
                   </Link>
