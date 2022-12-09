@@ -2,6 +2,11 @@
   max-width: 100%;
 }
 
+.no-campaigns-text {
+  text-align: center;
+  margin-top: 40px;
+}
+
 .row {
   padding-top: 12px;
 }

@@ -33,8 +33,6 @@ function LandingPage() {
   const handleFormSubmit = async (evt: any) => {
     evt.preventDefault();
 
-    navigate("/campaigns");
-
     const userData = {
       username,
       password,
@@ -46,6 +44,8 @@ function LandingPage() {
       setUser(result.data);
       // store the user in localStorage
       localStorage.setItem("user", JSON.stringify(result.data));
+
+      navigate("/campaigns");
     } catch (err) {
       console.log(err);
     }
